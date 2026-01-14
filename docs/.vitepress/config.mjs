@@ -271,7 +271,10 @@ const otherSidebar = [
       { text: "startAutoSave", link: "/storage-integration/startAutoSave" },
       { text: "stopAutoSave", link: "/storage-integration/stopAutoSave" },
       { text: "storageInfo", link: "/storage-integration/storageInfo" },
-      { text: "Storage Availability", link: "/storage-integration/storage-availability" },
+      {
+        text: "Storage Availability",
+        link: "/storage-integration/storage-availability",
+      },
     ],
   },
 
@@ -353,11 +356,25 @@ const otherSidebar = [
     text: "Development Tool",
     collapsed: true,
     items: [
-      { text: "DevTools", link: "/development-tool/DevTools" },
-      { text: "DevTools_enable", link: "/development-tool/DevTools.enable" },
       {
-        text: "DevTools Methods Reference",
-        link: "/development-tool/DevTools.methodsReference",
+        text: "DevTools overview",
+        link: "/development-tool/DevTools-overview",
+      },
+      {
+        text: "DevTools lifecycle",
+        link: "/development-tool/DevTools-lifecycle",
+      },
+      {
+        text: "DevTools tracking",
+        link: "/development-tool/DevTools-tracking",
+      },
+      {
+        text: "DevTools inspection",
+        link: "/development-tool/DevTools-inspection",
+      },
+      {
+        text: "DevTools guides",
+        link: "/development-tool/DevTools-guides",
       },
     ],
   },
@@ -410,11 +427,14 @@ export default defineConfig({
 
         { text: "DOM Helpers Core", link: "https://example" },
 
-          {
+        {
           text: "Methods Learning Guide",
           collapsed: true,
           items: [
-            { text: "methods guide", link: "/getting-started/methods-learning-guide" },
+            {
+              text: "methods guide",
+              link: "/getting-started/methods-learning-guide",
+            },
           ],
         },
 
