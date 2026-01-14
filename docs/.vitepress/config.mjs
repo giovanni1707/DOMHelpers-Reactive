@@ -228,23 +228,17 @@ const sharedSidebar = [
 ];
 
 const otherSidebar = [
+
   {
-    text: "Async State Operations",
+    text: "CleanUp System",
     collapsed: true,
     items: [
-      { text: "asyncState", link: "/async-operations/asyncState" },
-      { text: "execute", link: "/async-operations/execute" },
-      { text: "abort", link: "/async-operations/abort" },
-      { text: "reset", link: "/async-operations/reset" },
-      { text: "refetch", link: "/async-operations/refetch" },
-      { text: "data", link: "/async-operations/data" },
-      { text: "loading", link: "/async-operations/loading" },
-      { text: "error", link: "/async-operations/error" },
-      { text: "requestId", link: "/async-operations/requestId" },
-      { text: "abortController", link: "/async-operations/abortController" },
-      { text: "isSuccess", link: "/async-operations/isSuccess" },
-      { text: "isError", link: "/async-operations/isError" },
-      { text: "isIdle", link: "/async-operations/isIdle" },
+      { text: "collector", link: "/cleanup-system/collector" },
+      { text: "scope", link: "/cleanup-system/scope" },
+      { text: "add", link: "/cleanup-system/add" },
+      { text: "size", link: "/cleanup-system/size" },
+      { text: "disposed", link: "/cleanup-system/disposed" },
+      { text: "cleanup", link: "/cleanup-system/cleanup" },
     ],
   },
 
@@ -258,6 +252,55 @@ const otherSidebar = [
   },
 
   {
+    text: "Reactivity Engine",
+    collapsed: true,
+    items: [
+      {
+        text: "Under The Hood",
+        link: "/reactivity-engine/under-the-hood",
+      },
+      { text: "proxy", link: "/reactivity-engine/proxy" },
+      { text: "weakMap", link: "/reactivity-engine/weakMap" },
+      { text: "set", link: "/reactivity-engine/set" },
+      { text: "closures", link: "/reactivity-engine/closures" },
+      {
+        text: "microtaskQueue",
+        link: "/reactivity-engine/microtaskQueue",
+      },
+      { text: "symbol", link: "/reactivity-engine/symbol" },
+    ],
+  },
+
+  {
+    text: "Development Tool",
+    collapsed: true,
+    items: [
+      {
+        text: "DevTools overview",
+        link: "/development-tool/DevTools-overview",
+      },
+      {
+        text: "DevTools lifecycle",
+        link: "/development-tool/DevTools-lifecycle",
+      },
+      {
+        text: "DevTools tracking",
+        link: "/development-tool/DevTools-tracking",
+      },
+      {
+        text: "DevTools inspection",
+        link: "/development-tool/DevTools-inspection",
+      },
+      {
+        text: "DevTools guides",
+        link: "/development-tool/DevTools-guides",
+      },
+    ],
+  },
+];
+
+const storageSidebar = [
+            {
     text: "Storage Integration",
     collapsed: true,
     items: [
@@ -318,67 +361,7 @@ const otherSidebar = [
       { text: "immediate", link: "/watchstorage-options/options.immediate" },
     ],
   },
-
-  {
-    text: "CleanUp System",
-    collapsed: true,
-    items: [
-      { text: "collector", link: "/cleanup-system/collector" },
-      { text: "scope", link: "/cleanup-system/scope" },
-      { text: "add", link: "/cleanup-system/add" },
-      { text: "size", link: "/cleanup-system/size" },
-      { text: "disposed", link: "/cleanup-system/disposed" },
-      { text: "cleanup", link: "/cleanup-system/cleanup" },
-    ],
-  },
-
-  {
-    text: "Reactivity Engine",
-    collapsed: true,
-    items: [
-      {
-        text: "Under The Hood",
-        link: "/reactivity-engine/under-the-hood",
-      },
-      { text: "proxy", link: "/reactivity-engine/proxy" },
-      { text: "weakMap", link: "/reactivity-engine/weakMap" },
-      { text: "set", link: "/reactivity-engine/set" },
-      { text: "closures", link: "/reactivity-engine/closures" },
-      {
-        text: "microtaskQueue",
-        link: "/reactivity-engine/microtaskQueue",
-      },
-      { text: "symbol", link: "/reactivity-engine/symbol" },
-    ],
-  },
-
-  {
-    text: "Development Tool",
-    collapsed: true,
-    items: [
-      {
-        text: "DevTools overview",
-        link: "/development-tool/DevTools-overview",
-      },
-      {
-        text: "DevTools lifecycle",
-        link: "/development-tool/DevTools-lifecycle",
-      },
-      {
-        text: "DevTools tracking",
-        link: "/development-tool/DevTools-tracking",
-      },
-      {
-        text: "DevTools inspection",
-        link: "/development-tool/DevTools-inspection",
-      },
-      {
-        text: "DevTools guides",
-        link: "/development-tool/DevTools-guides",
-      },
-    ],
-  },
-];
+]
 
 export default defineConfig({
   title: "DOM Helpers ",
@@ -393,7 +376,9 @@ export default defineConfig({
       { text: "Fundamentals", link: "/reactive-state/state" },
       { text: "Collection", link: "/collection-operations/items" },
       { text: "Form", link: "/form-operations/setValue" },
-      { text: "More...", link: "/async-operations/asyncState" },
+      { text: "Async", link: "/async-operations/asyncState" },
+      { text: "Storage", link: "/storage-integration/autosave" },
+      { text: "More...", link: "/cleanup-system/collector" },
       { text: "The Creator", link: "/creator/creator" },
       { text: "Sponsor", link: "sponsor/note" },
       { text: "DOM Helpers Core", link: "https://example" },
@@ -572,13 +557,33 @@ export default defineConfig({
       "/form-computed-properties/": formSidebar,
       "/form-state-properties/": formSidebar,
 
+      // shared sidebar for storage
+      "/storage-integration/": storageSidebar,
+
+       "/async-operations/": [
+      {
+    text: "Async State Operations",
+    collapsed: true,
+    items: [
+      { text: "asyncState", link: "/async-operations/asyncState" },
+      { text: "execute", link: "/async-operations/execute" },
+      { text: "abort", link: "/async-operations/abort" },
+      { text: "reset", link: "/async-operations/reset" },
+      { text: "refetch", link: "/async-operations/refetch" },
+      { text: "data", link: "/async-operations/data" },
+      { text: "loading", link: "/async-operations/loading" },
+      { text: "error", link: "/async-operations/error" },
+      { text: "requestId", link: "/async-operations/requestId" },
+      { text: "abortController", link: "/async-operations/abortController" },
+      { text: "isSuccess", link: "/async-operations/isSuccess" },
+      { text: "isError", link: "/async-operations/isError" },
+      { text: "isIdle", link: "/async-operations/isIdle" },
+    ],
+  },
+       ],
+
       //shared sidebar for otherSidebar
-      "/async-operations/": otherSidebar,
       "/error-handling/": otherSidebar,
-      "/storage-integration/": otherSidebar,
-      "/reactive-storage-proxy-methods/": otherSidebar,
-      "/autosave-options/": otherSidebar,
-      "/watchstorage-options/": otherSidebar,
       "/cleanup-system/": otherSidebar,
       "/reactivity-engine/": otherSidebar,
       "/development-tool/": otherSidebar,
@@ -589,8 +594,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: "about", link: "/creator/creator" },
-            { text: "contact info", link: "/creator/contact-info" },
-            { text: "vision", link: "/creator/vision" },
+            { text: "contact and support", link: "/creator/contact-info" },
           ],
         },
       ],
@@ -602,7 +606,6 @@ export default defineConfig({
           items: [
             { text: "developer note", link: "/sponsor/note" },
             { text: "sponsor", link: "/sponsor/sponsor" },
-            { text: "contributors", link: "/sponsor/contributors" },
           ],
         },
       ],
