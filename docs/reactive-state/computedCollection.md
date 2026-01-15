@@ -91,21 +91,23 @@ const collection = Collections.createWithComputed(items, computed);
 - Reactive collection with `.items` array, all collection methods, and computed properties
 
  
-
 ## Why Does This Exist?
 
-### The Challenge: Keeping Calculated Values Updated
+### Two Approaches to Derived Values in Collections
 
-When you have derived values (totals, averages, counts), keeping them in sync is tedious:
+The Reactive library offers flexible ways to work with calculated values from collections, each suited to different scenarios.
 
+### Function-Based Calculations
+
+When you need **on-demand calculations** and want explicit control over when values are computed:
 ```javascript
-// Without computedCollection
+// Create a collection
 const cart = createCollection([
   { name: 'Widget', price: 10, qty: 2 },
   { name: 'Gadget', price: 20, qty: 1 }
 ]);
 
-// Calculate total manually
+// Define calculation functions
 function calculateTotal() {
   return cart.items.reduce((sum, item) => 
     sum + (item.price * item.qty), 0
@@ -118,48 +120,28 @@ console.log(total);  // 40
 // Add item
 cart.add({ name: 'Tool', price: 15, qty: 1 });
 
-// Must remember to recalculate!
-total = calculateTotal();  // Easy to forget!
+// Recalculate when needed
+total = calculateTotal();
 console.log(total);  // 55
 
-// In effects, must call function
+// Use in effects
 effect(() => {
-  const currentTotal = calculateTotal();  // Repeated logic
+  const currentTotal = calculateTotal();
   document.getElementById('total').textContent = currentTotal;
 });
-
-// Different calculations scattered everywhere
-function calculateTax() { /* ... */ }
-function calculateItemCount() { /* ... */ }
-// Maintenance nightmare!
 ```
 
-At first glance, this seems workable. But as complexity grows, problems emerge.
+**This approach is great when you need:**
+✅ Explicit control over when calculations run
+✅ On-demand computation for performance
+✅ Calculations that depend on external factors
+✅ Standard function-based patterns
 
-**What's the Real Issue?**
+### When Auto-Updating Derived Values Fit Your Workflow
 
-```
-Data Changes
-     ↓
-Must remember to recalculate
-     ↓
-Call calculation function
-     ↓
-Update stored value
-     ↓
-Hope you didn't forget any! ❌
-```
-
-**Problems:**
-❌ **Manual updates** - Must recalculate after every change  
-❌ **Easy to forget** - Values get out of sync  
-❌ **Scattered logic** - Calculations in multiple places  
-❌ **Repeated code** - Same calculations everywhere  
-
-### The Solution with `computedCollection()`
-
+In scenarios where you want **derived values that stay synchronized automatically** with collection changes, `computedCollection()` provides a more direct approach:
 ```javascript
-// With computedCollection
+// Collection with computed properties
 const cart = computedCollection(
   [
     { name: 'Widget', price: 10, qty: 2 },
@@ -176,38 +158,55 @@ const cart = computedCollection(
 
 console.log(cart.total);  // 40
 
-// Add item - total updates automatically!
+// Add item - total updates automatically
 cart.add({ name: 'Tool', price: 15, qty: 1 });
 
-console.log(cart.total);  // 55 (automatically updated!)
+console.log(cart.total);  // 55 (auto-updated!)
 
-// In effects, just use the property
+// In effects, use as a property
 effect(() => {
   document.getElementById('total').textContent = cart.total;
-  // Always current, no function calls needed!
+  // Always current, reactively updates
 });
 ```
 
-**What Just Happened?**
-
+**This method is especially useful when:**
 ```
-Data Changes
-     ↓
-Computed properties automatically recalculate
-     ↓
-Always up-to-date
-     ↓
-Zero manual work ✅
+computedCollection Flow:
+┌──────────────────────┐
+│ Define computed      │
+│ properties once      │
+└──────────┬───────────┘
+           │
+           ▼
+   Collection changes
+           │
+           ▼
+   Computed values
+   auto-recalculate
+           │
+           ▼
+  ✅ Always synchronized
 ```
 
-**Benefits:**
-✅ **Automatic updates** - Computed values stay current  
-✅ **Define once** - Logic in one place  
-✅ **Clean code** - Use properties, not functions  
-✅ **No forgetting** - System handles updates  
+**Where computedCollection() shines:**
+✅ **Automatic synchronization** - Derived values stay current with changes
+✅ **Property-based access** - Use `cart.total` instead of `calculateTotal()`
+✅ **Centralized logic** - Calculations defined with the collection
+✅ **Reactive by default** - Works seamlessly with effects and watchers
+✅ **Clean syntax** - Access computed values like regular properties
 
- 
+**The Choice is Yours:**
+- Use function-based calculations when you need explicit control over when values compute
+- Use `computedCollection()` when you want auto-synchronized derived values
+- Both approaches work with reactive collections
 
+**Benefits of the computedCollection approach:**
+✅ **Define once, use everywhere** - Computed logic in one place
+✅ **Automatic recalculation** - Values update when collection changes
+✅ **Property syntax** - Access like `cart.total`, not `calculateTotal()`
+✅ **Reactive integration** - Works seamlessly with effects and watchers
+✅ **Consistent state** - Derived values never out of sync
 ## Mental Model
 
 Think of computed collections as **a smart spreadsheet with live formulas**:

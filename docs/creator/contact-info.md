@@ -1,4 +1,11 @@
 # Contact & Support
+<div class="creator">
+  <img src="/me.jpg" alt="Giovanni Marianne" class="creator-photo" />
+  <div class="creator-info">
+    <p><strong>Giovanni Marianne</strong></p>
+    <p>Creator of DOM Helpers Library</p>
+  </div>
+</div>
 
 DOM Helpers is actively maintained and welcomes feedback, suggestions, and contributions from the community.
 

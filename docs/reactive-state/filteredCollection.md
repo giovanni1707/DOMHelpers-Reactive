@@ -81,17 +81,22 @@ function predicate(item, index) {
 
  
 
+
 ## Why Does This Exist?
 
-### The Challenge: Keeping Filtered Views Updated
+### Two Approaches to Filtered Data Views
 
-When you need multiple views of the same data, keeping them synchronized is complex:
+The Reactive library offers flexible ways to work with filtered subsets of collections, each suited to different use cases.
+
+### Function-Based Filtering
+
+When you need **on-demand filtering** and want explicit control over when filtering occurs:
 
 ```javascript
-// Without filteredCollection
+// Create a collection
 const allTodos = createCollection([...]);
 
-// Create filtered arrays manually
+// Define filter functions
 function getActiveTodos() {
   return allTodos.filter(t => !t.done);
 }
@@ -104,55 +109,37 @@ function getHighPriorityTodos() {
   return allTodos.filter(t => t.priority === 'high');
 }
 
-// Must call functions every time
-const active = getActiveTodos();  // Creates new array
+// Call functions when needed
+const active = getActiveTodos();
 console.log(active.length);
 
 // Add todo
 allTodos.add({ text: 'New task', done: false });
 
-// Filtered views are stale!
-console.log(active.length);  // Still old count!
+// Call again to get updated view
+const updatedActive = getActiveTodos();
+console.log(updatedActive.length);
 
-// Must call again
-const updatedActive = getActiveTodos();  // New array
-console.log(updatedActive.length);  // Now correct
-
-// In effects, must filter repeatedly
+// Use in effects
 effect(() => {
-  const active = getActiveTodos();  // Filter again
-  const completed = getCompletedTodos();  // Filter again
-  // Wasteful repeated filtering!
+  const active = getActiveTodos();
+  const completed = getCompletedTodos();
   render(active, completed);
 });
 ```
 
-At first glance, calling filter functions seems reasonable. But problems compound with complexity.
+**This approach is great when you need:**
+✅ Explicit control over when filtering happens
+✅ One-time snapshots of filtered data
+✅ Performance optimization for infrequent updates
+✅ Standard JavaScript filtering patterns
 
-**What's the Real Issue?**
+### When Auto-Synchronized Filtered Views Fit Your Workflow
 
-```
-Source Changes
-     ↓
-All filtered views out of sync
-     ↓
-Must call filter functions manually
-     ↓
-Must remember to update everywhere
-     ↓
-Easy to miss updates ❌
-```
-
-**Problems:**
-❌ **Manual updates** - Must refilter after every change  
-❌ **Stale data** - Views get out of sync  
-❌ **Repeated filtering** - Wasteful recalculation  
-❌ **Scattered logic** - Filter code in multiple places  
-
-### The Solution with `filteredCollection()`
+In scenarios where you want **filtered views that stay synchronized automatically** with the source collection, `filteredCollection()` provides a more direct approach:
 
 ```javascript
-// With filteredCollection
+// Create source collection
 const allTodos = createCollection([...]);
 
 // Create filtered views once
@@ -174,38 +161,57 @@ const highPriority = filteredCollection(
 // Views are always current
 console.log(activeTodos.length);
 
-// Add todo - all views auto-update!
+// Add todo - all views auto-update
 allTodos.add({ text: 'New task', done: false, priority: 'high' });
 
-console.log(activeTodos.length);    // Updated automatically!
-console.log(highPriority.length);   // Updated automatically!
+console.log(activeTodos.length);    // Auto-updated!
+console.log(highPriority.length);   // Auto-updated!
 
-// In effects, just use the views
+// In effects, use views directly
 effect(() => {
   render(activeTodos.items, completedTodos.items);
-  // Always current, no filtering needed!
+  // Always current, reactively updates
 });
 ```
 
-**What Just Happened?**
+**This method is especially useful when:**
 
 ```
-Source Changes
-     ↓
-Filtered views automatically sync
-     ↓
-Always up-to-date
-     ↓
-Zero manual work ✅
+filteredCollection Flow:
+┌──────────────────────┐
+│ Define filter once   │
+└──────────┬───────────┘
+           │
+           ▼
+   Source changes
+           │
+           ▼
+   Filtered view
+   auto-updates
+           │
+           ▼
+  ✅ Always synchronized
 ```
 
-**Benefits:**
-✅ **Auto-sync** - Views update automatically  
-✅ **Always current** - Never stale  
-✅ **Efficient** - Only recalculates when needed  
-✅ **Clean code** - Filter once, use everywhere  
+**Where filteredCollection() shines:**
+✅ **Automatic synchronization** - Filtered views stay current with source changes
+✅ **Reactive by default** - Works seamlessly with effects and watchers
+✅ **Multiple views** - Create many filtered perspectives of the same data
+✅ **Collection methods** - Filtered views have full collection API (add, remove, etc.)
+✅ **Efficient updates** - Only recalculates when source changes
 
- 
+**The Choice is Yours:**
+- Use function-based filtering when you need explicit control over when filtering occurs
+- Use `filteredCollection()` when you want auto-synchronized filtered views
+- Both approaches work with reactive collections
+
+**Benefits of the filteredCollection approach:**
+✅ **Define once, use everywhere** - Filter logic in one place
+✅ **Automatic updates** - Filtered views sync when source changes
+✅ **Multiple perspectives** - Create as many filtered views as needed
+✅ **Full collection API** - Filtered views have all collection methods
+✅ **Reactive integration** - Works seamlessly with effects and watchers
+✅ **Consistent state** - Filtered views never out of sync with source
 
 ## Mental Model
 

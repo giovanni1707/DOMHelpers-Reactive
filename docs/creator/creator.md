@@ -1,4 +1,4 @@
-# The creator
+# The Creator
 <div class="creator">
   <img src="/me.jpg" alt="Giovanni Marianne" class="creator-photo" />
   <div class="creator-info">

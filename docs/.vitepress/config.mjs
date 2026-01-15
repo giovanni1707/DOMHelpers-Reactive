@@ -380,7 +380,7 @@ export default defineConfig({
       { text: "Storage", link: "/storage-integration/autosave" },
       { text: "More...", link: "/cleanup-system/collector" },
       { text: "The Creator", link: "/creator/creator" },
-      { text: "Sponsor", link: "sponsor/note" },
+      { text: "Sponsor", link: "sponsor/sponsor" },
       { text: "DOM Helpers Core", link: "https://example" },
     ],
 
@@ -427,7 +427,7 @@ export default defineConfig({
           text: "Roadmaps",
           collapsed: true,
           items: [
-            { text: "step 1", link: "/getting-started/beginner-roadmap" },
+            { text: "roadmap 1", link: "/getting-started/roadmap-1" },
           ],
         },
       ],
@@ -593,8 +593,9 @@ export default defineConfig({
           text: "The Creator",
           collapsed: true,
           items: [
-            { text: "about", link: "/creator/creator" },
-            { text: "contact and support", link: "/creator/contact-info" },
+            { text: "About Me", link: "/creator/creator" },
+            { text: "Approach & Philosophy", link: "/creator/approach-and-philosophy" },
+            { text: "Contact And Support", link: "/creator/contact-info" },
           ],
         },
       ],
@@ -604,8 +605,8 @@ export default defineConfig({
           text: "Sponsor The Project",
           collapsed: true,
           items: [
-            { text: "developer note", link: "/sponsor/note" },
             { text: "sponsor", link: "/sponsor/sponsor" },
+            { text: "developer note", link: "/sponsor/note" },
           ],
         },
       ],
