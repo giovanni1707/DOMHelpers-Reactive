@@ -368,19 +368,45 @@ export default defineConfig({
   description: "A JavaScript-first DOM utility library",
 
   themeConfig: {
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/giovanni1707/DOMHelpers-Reactive-System' }
+    ],
+
     nav: [
       {
         text: "Getting Started",
         link: "/getting-started/what-is-dom-helpers-reactive",
       },
       { text: "Fundamentals", link: "/reactive-state/state" },
-      { text: "Collection", link: "/collection-operations/items" },
-      { text: "Form", link: "/form-operations/setValue" },
-      { text: "Async", link: "/async-operations/asyncState" },
-      { text: "Storage", link: "/storage-integration/autosave" },
-      { text: "More...", link: "/cleanup-system/collector" },
-      { text: "The Creator", link: "/creator/creator" },
-      { text: "Sponsor", link: "sponsor/sponsor" },
+      // UPDATED: Created a dropdown for Collection, Form, Async, and Storage
+      {
+        text: "Features",
+        items: [
+          { text: "Collection", link: "/collection-operations/items" },
+          { text: "Form", link: "/form-operations/setValue" },
+          { text: "Async", link: "/async-operations/asyncState" },
+          { text: "Storage", link: "/storage-integration/autosave" },
+        ],
+      },
+      // UPDATED: Created a dropdown for More... section
+      {
+        text: "More...",
+        items: [
+          { text: "Cleanup System", link: "/cleanup-system/collector" },
+          { text: "Error Handling", link: "/error-handling/ErrorBoundary" },
+          { text: "Reactivity Engine", link: "/reactivity-engine/under-the-hood" },
+          { text: "Development Tools", link: "/development-tool/DevTools-overview" },
+        ],
+      },
+      // UPDATED: Created a dropdown for About section
+      {
+        text: "About",
+        items: [
+          { text: "The Creator", link: "/creator/creator" },
+          { text: "Sponsor", link: "/sponsor/sponsor" },
+        ],
+      },
       { text: "DOM Helpers Core", link: "https://example" },
     ],
 
