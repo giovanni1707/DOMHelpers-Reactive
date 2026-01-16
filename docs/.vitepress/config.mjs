@@ -388,7 +388,7 @@ export default defineConfig({
           { text: "Collection", link: "/collection-operations/items" },
           { text: "Form", link: "/form-operations/setValue" },
           { text: "Async", link: "/async-operations/asyncState" },
-          { text: "Storage", link: "/storage-integration/autosave" },
+          { text: "Storage", link: "/storage-integration/autoSave" },
         ],
       },
       // UPDATED: Created a dropdown for More... section
