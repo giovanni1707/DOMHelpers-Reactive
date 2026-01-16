@@ -367,6 +367,7 @@ export default defineConfig({
   title: "DOM Helpers ",
   description: "A JavaScript-first DOM utility library",
   base: "/DOMHelpers-Reactive-Documentation/",
+  ignoreDeadLinks: true,
 
   themeConfig: {
 
