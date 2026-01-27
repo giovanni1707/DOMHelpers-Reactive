@@ -410,7 +410,7 @@ export default defineConfig({
         ],
       },
 
-      { text: "ReactivePlus", link: "https://giovanni1707.github.io/DOMHelpers-ReactivePlus" },
+      { text: "ReactivePlus", link: "https://giovanni1707.github.io/DOM-Helpers-ReactivePlus" },
 
       { text: "Core", link: "https://example" },
     ],
@@ -449,7 +449,7 @@ export default defineConfig({
           ],
         },
         
-        { text: "ReactivePlus", link: "https://giovanni1707.github.io/DOMHelpers-ReactivePlus" },
+        { text: "ReactivePlus", link: "https://giovanni1707.github.io/DOM-Helpers-ReactivePlus" },
         { text: "Core", link: "https://example" },
 
         {
