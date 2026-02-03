@@ -28,7 +28,7 @@ todos.add({ text: 'Read book', done: false });
 
 **That's it.** Create reactive arrays with built-in methods like `.add()`, `.remove()`, `.update()`, `.clear()` that automatically trigger updates.
 
----
+ 
 
 ## What is `createCollection()`?
 
@@ -38,7 +38,7 @@ Think of it as **an array with superpowers** — it tracks changes automatically
 
 **In practical terms:** Instead of `state({ items: [] })` where you manually push/splice, you get a collection with `.add()`, `.remove()`, `.update()` methods that handle everything.
 
----
+ 
 
 ## Syntax
 
@@ -73,7 +73,7 @@ myCollection.reset(newItems);        // Replace all items
 **Returns:**
 - Reactive collection with `.items` array and built-in methods
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -163,7 +163,7 @@ todos.toggle(t => t.text === 'Walk dog', 'done');
 ✅ **No manual sync** - Effects run automatically
 ✅ **Less code** - 70% less boilerplate
 
----
+ 
 
 ## Built-in Methods Overview
 
@@ -208,7 +208,7 @@ todos.toggle(t => t.text === 'Walk dog', 'done');
 - `.isEmpty()` - Check if empty
 - `.toArray()` - Get copy as plain array
 
----
+ 
 
 ## Basic Usage
 
@@ -262,7 +262,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 2: Shopping Cart
 
@@ -313,7 +313,7 @@ function updateQty(productId, qty) {
 
 See the full documentation for more examples including message lists, tag managers, playlists, inventory systems, and more.
 
----
+ 
 
 ## Key Takeaways
 
@@ -323,7 +323,7 @@ See the full documentation for more examples including message lists, tag manage
 ✅ **Chainable** - Most methods return `this` for chaining
 ✅ **Automatic updates** - Works seamlessly with effects and bindings
 
----
+ 
 
 ## What's Next?
 
@@ -331,7 +331,7 @@ See the full documentation for more examples including message lists, tag manage
 - **`filteredCollection()`** - Filtered views of collections
 - **`state()`** - For objects and complex data
 
----
+ 
 
 ## Summary
 

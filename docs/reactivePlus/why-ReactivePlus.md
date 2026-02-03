@@ -10,7 +10,7 @@ But when you use them together, something remarkable happens: you get a **cleane
 
 This section exists to show you that difference.
 
----
+ 
 
 ## Reactive Standalone vs Reactive + DOM Helpers
 
@@ -43,7 +43,7 @@ effect(() => {
 
 **However**, as your UI logic grows, this approach reveals its fundamental limitations.
 
----
+ 
 
 ### Reactive + DOM Helpers: The Complete Picture
 
@@ -66,7 +66,7 @@ You get:
 - **Easier to reason about** - Patterns become obvious
 - **Easier to scale** - Complexity stays manageable
 
----
+ 
 
 ## The Real Problems with Plain JavaScript DOM at Scale
 
@@ -74,7 +74,7 @@ Plain JavaScript DOM APIs are powerful. They're also **painfully low-level**.
 
 Let's look at what happens when applications grow beyond simple examples, and see how DOM Helpers solves each problem.
 
----
+ 
 
 ### Problem 1: Endless Repetition and Boilerplate
 
@@ -123,7 +123,7 @@ effect(() => {
 
 **This is exhausting to write and painful to maintain.**
 
----
+ 
 
 #### ✅ DOM Helpers ReactivePlus Version
 
@@ -176,7 +176,7 @@ effect(() => {
 
 **The difference is night and day.**
 
----
+ 
 
 ### Problem 2: Collections Are a Nightmare
 
@@ -217,7 +217,7 @@ effect(() => {
 - ❌ Nested queries and null checks
 - ❌ Hard to see what's actually changing
 
----
+ 
 
 #### ✅ DOM Helpers ReactivePlus Version
 
@@ -247,7 +247,7 @@ effect(() => {
 
 **From 15 lines to 4 lines. And it's more readable.**
 
----
+ 
 
 ### Problem 3: Conditional Logic Becomes Unreadable
 
@@ -321,7 +321,7 @@ effect(() => {
 - ❌ Hard to add new states or UI elements
 - ❌ **Intent is buried** in implementation details
 
----
+ 
 
 #### ✅ DOM Helpers ReactivePlus Version
 
@@ -413,7 +413,7 @@ whenState(
 
 **The intent is crystal clear.**
 
----
+ 
 
 ### Problem 4: Mixed Responsibilities Everywhere
 
@@ -473,7 +473,7 @@ effect(() => {
 
 **Where does one responsibility end and another begin? Impossible to tell.**
 
----
+ 
 
 #### ✅ DOM Helpers ReactivePlus Version
 
@@ -563,7 +563,7 @@ whenState(
 
 **Now you can see where each responsibility lives.**
 
----
+ 
 
 ## How DOM Helpers Solves These Problems
 
@@ -587,7 +587,7 @@ const buttons = ClassName.btn;
 
 **Simple. Clean. Obvious.**
 
----
+ 
 
 ### 2. **Enhancers**: Bulk Property Updaters
 
@@ -614,7 +614,7 @@ ClassName.btn.update({
 });
 ```
 
----
+ 
 
 ### 3. **Conditions**: Declarative State-Based UI
 
@@ -632,7 +632,7 @@ whenState(
 );
 ```
 
----
+ 
 
 ## "HTML Stays HTML, JS Stays JS" Philosophy
 
@@ -679,7 +679,7 @@ effect(() => {
 - ❌ Loses event listeners and component state
 - ❌ Mixes structure with behavior
 
----
+ 
 
 ### DOM Helpers’ Recommended Approach: Clear Separation
 > With DOM Helpers, the recommended pattern is to keep structure and behavior clearly separated.
@@ -719,7 +719,7 @@ effect(() => {
 - ✅ **Only changed properties update** - Performance
 - ✅ **Clear responsibilities** - Structure vs behavior
 
----
+ 
 
 ## Separation of Concerns: Three Clear Layers
 
@@ -733,7 +733,7 @@ When you combine Reactive with DOM Helpers, your code naturally separates into *
 
 **Each layer has a single responsibility. Clean. Maintainable. Scalable.**
 
----
+ 
 
 ### Example: Todo App (Three Layers)
 
@@ -792,7 +792,7 @@ whenState(
 
 **Each layer is independent, testable, and maintainable.**
 
----
+ 
 
 ## The Value Proposition: What You Actually Gain
 
@@ -810,7 +810,7 @@ whenState(
 | **Scalability** | Gets messy fast | Stays clean at scale |
 | **DX** | Tedious and repetitive | Fast and enjoyable |
 
----
+ 
 
 ### 💡 Real-World Impact
 
@@ -826,7 +826,7 @@ whenState(
 - Plain JS: **Maintenance nightmare** - Impossible to track
 - DOM Helpers: **Still manageable** - Scales gracefully
 
----
+ 
 
 ## Why This Pairing Exists
 
@@ -849,7 +849,7 @@ DOM Helpers proves that **DOM manipulation can be expressive and declarative**.
 - You **understand more of it**
 - You **keep full control** over the DOM
 
----
+ 
 
 ## Key Takeaway
 
@@ -865,7 +865,7 @@ You don't have to sacrifice **readability** for **functionality**—you get both
 
 **This is why the pairing exists.**
 
----
+ 
 
 ## What's Next?
 

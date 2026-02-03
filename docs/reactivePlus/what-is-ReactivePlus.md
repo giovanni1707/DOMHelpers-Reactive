@@ -46,7 +46,7 @@ state.count++; // "Count: 1"
 - This is **raw, honest reactive JavaScript**.
 - It works perfectly.
 
----
+ 
 
 ### Gains Superpowers with Integration: Declarative UI Flow
 
@@ -83,7 +83,7 @@ state.count++; // DOM auto-updates with styled content
 
 The effect now **reads like a description of the UI**, not a sequence of DOM operations.
 
----
+ 
 
 ### What Changed — and What Didn't
 

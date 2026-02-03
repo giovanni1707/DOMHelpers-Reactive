@@ -15,7 +15,7 @@ counter.count = 5; // ✨ DOM updates automatically!
 
 **That's it.** The effect runs once immediately, then re-runs automatically whenever `counter.count` changes. No manual updates needed.
 
----
+ 
 
 ## What is `effect()`?
 
@@ -25,7 +25,7 @@ Think of it as **setting up an automatic response system**. You define what shou
 
 **In practical terms:** Effects are how you make things happen when state changes — updating the DOM, logging, making API calls, or any other side effect.
 
----
+ 
 
 ## Syntax
 
@@ -50,7 +50,7 @@ stopEffect();
 **Returns:**
 - A cleanup function that stops the effect when called
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -144,7 +144,7 @@ UI always in sync ✅
 ✅ **Centralized logic** - Define once, runs everywhere
 ✅ **Easy to maintain** - Add new effects without touching existing code
 
----
+ 
 
 ## Mental Model: The Automatic Responder
 
@@ -191,7 +191,7 @@ Think of `effect()` like **setting up automatic responses in a smart home**:
 
 **Key Insight:** Effects are like sensors + automated responses. They watch for changes and react automatically.
 
----
+ 
 
 ## How Does It Work?
 
@@ -254,7 +254,7 @@ counter.count = 5;
 // Dependencies re-tracked for next time
 ```
 
----
+ 
 
 ## Basic Usage
 
@@ -275,7 +275,7 @@ user.name = 'Bob'; // ✨ DOM updates to "Bob"
 - When `user.name` changes, effect re-runs
 - DOM always shows current name
 
----
+ 
 
 ### Example 2: Multiple Properties
 
@@ -298,7 +298,7 @@ product.price = 899; // ✨ Only price updates in DOM
 product.quantity = 2; // ✨ Only quantity updates in DOM
 ```
 
----
+ 
 
 ### Example 3: Conditional Logic
 
@@ -326,7 +326,7 @@ auth.userName = 'Alice';
 // ✨ Effect runs: hides login, shows logout, displays welcome
 ```
 
----
+ 
 
 ### Example 4: Working with Collections
 
@@ -345,7 +345,7 @@ effect(() => {
 todoList.items.push('New task'); // ✨ All todo-count elements update
 ```
 
----
+ 
 
 ### Example 5: Computed Display Values
 
@@ -366,7 +366,7 @@ cart.items.push({ name: 'Hat', price: 19.99 });
 // ✨ Total recalculates and displays: "Total: $99.97"
 ```
 
----
+ 
 
 ### Example 6: Class Toggle Based on State
 
@@ -382,7 +382,7 @@ theme.isDark = true;  // ✨ Adds 'dark-mode' class
 theme.isDark = false; // ✨ Removes 'dark-mode' class
 ```
 
----
+ 
 
 ### Example 7: Form Validation Display
 
@@ -413,7 +413,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Deep Dive: Effect Lifecycle
 
@@ -461,7 +461,7 @@ counter.count = 3; // Nothing logged - effect stopped
 counter.count = 4; // Nothing logged - effect stopped
 ```
 
----
+ 
 
 ### Multiple Effects Are Independent
 
@@ -485,7 +485,7 @@ data.a = 100; // Nothing - first effect stopped
 data.b = 200; // Second effect still runs
 ```
 
----
+ 
 
 ## Effect with DOM Helpers Integration
 
@@ -510,7 +510,7 @@ effect(() => {
 dashboard.revenue = 50000;
 ```
 
----
+ 
 
 ### Using Collections for Multiple Elements
 
@@ -533,7 +533,7 @@ notification.type = 'success';
 // ✨ All .notification elements update
 ```
 
----
+ 
 
 ### Using Selector for Complex Queries
 
@@ -548,7 +548,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Real-World Examples
 
@@ -591,7 +591,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 2: Progress Tracker
 
@@ -627,7 +627,7 @@ setInterval(() => {
 }, 1000);
 ```
 
----
+ 
 
 ### Example 3: Real-Time Form Preview
 
@@ -669,7 +669,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 4: Shopping Cart Badge
 
@@ -698,7 +698,7 @@ function addToCart(item) {
 }
 ```
 
----
+ 
 
 ### Example 5: Tab Navigation State
 
@@ -727,7 +727,7 @@ Collections.ClassName.tab.on('click', (e) => {
 });
 ```
 
----
+ 
 
 ## Common Patterns
 
@@ -747,7 +747,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Pattern 2: Logging State Changes
 
@@ -766,7 +766,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Pattern 3: Syncing with External Systems
 
@@ -787,7 +787,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Pattern 4: Conditional Effect Logic
 
@@ -806,7 +806,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Pattern 5: Multiple Elements with Same Update
 
@@ -828,7 +828,7 @@ setInterval(() => {
 }, 1000);
 ```
 
----
+ 
 
 ## Important Notes
 
@@ -846,7 +846,7 @@ data.value = 1;
 // Console logs: "Effect ran! 1"
 ```
 
----
+ 
 
 ### 2. Only Tracked Properties Trigger Re-runs
 
@@ -862,7 +862,7 @@ obj.a = 10; // ✅ Effect runs (a was read)
 obj.b = 20; // ❌ Effect doesn't run (b wasn't read)
 ```
 
----
+ 
 
 ### 3. Dynamic Dependencies
 
@@ -887,7 +887,7 @@ data.a = 100; // Effect doesn't run (a not in current dependencies)
 data.b = 200; // Effect runs (b is now a dependency)
 ```
 
----
+ 
 
 ### 4. Avoid Infinite Loops
 
@@ -905,7 +905,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Summary
 

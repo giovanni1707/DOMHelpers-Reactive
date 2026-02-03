@@ -25,7 +25,7 @@ name.value = 'Bob'; // ✨ Only name updates
 
 **That's it.** Instead of calling `ref()` multiple times, use `refs()` to create several refs at once. Less repetition, cleaner code.
 
----
+ 
 
 ## What is `refs()`?
 
@@ -35,7 +35,7 @@ Think of it as **ordering a combo meal** instead of ordering each item separatel
 
 **In practical terms:** Instead of writing `const a = ref(1); const b = ref(2); const c = ref(3);`, you write `const { a, b, c } = refs({ a: 1, b: 2, c: 3 });`
 
----
+ 
 
 ## Syntax
 
@@ -74,7 +74,7 @@ const {
 **Returns:**
 - Object where each property is a `ref()` containing the initial value
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -188,7 +188,7 @@ Clean, Grouped, Maintainable
 ✅ **Automatic reactivity** - Each ref is fully reactive
 ✅ **Independent tracking** - Changing one doesn't affect others
 
----
+ 
 
 ## Mental Model: Combo Order
 
@@ -225,7 +225,7 @@ Think of `refs()` like **ordering a combo meal** at a restaurant:
 
 You get **the same refs**, just with **less repetition** and **cleaner code**.
 
----
+ 
 
 ## How Does It Work?
 
@@ -277,7 +277,7 @@ name.value = 'Bob'; // Only affects name
 **Key Insight:**
 `refs()` doesn't create anything special. It's just **syntactic sugar** for creating multiple `ref()` calls. Each returned ref is completely independent.
 
----
+ 
 
 ## Basic Usage
 
@@ -315,7 +315,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 2: Form Fields
 
@@ -362,7 +362,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 3: UI Toggles
 
@@ -410,7 +410,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 4: Filter Controls
 
@@ -457,7 +457,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 5: Timer Controls
 
@@ -519,7 +519,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 6: Pagination Controls
 
@@ -563,7 +563,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 7: Color Mixer
 
@@ -607,7 +607,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 8: Score Board
 
@@ -639,7 +639,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 9: Settings Panel
 
@@ -673,7 +673,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 10: Chart Controls
 
@@ -719,7 +719,7 @@ function updateChart(config) {
 }
 ```
 
----
+ 
 
 ## refs() vs Individual ref() Calls
 
@@ -753,7 +753,7 @@ const active = ref(true);
 ✅ Refs added at different times
 ✅ Personal preference for separate declarations
 
----
+ 
 
 ## refs() vs state()
 
@@ -793,7 +793,7 @@ user.count++; // Part of user object
 ✅ Complex or nested data
 ✅ Values that change together
 
----
+ 
 
 ## Common Patterns
 
@@ -847,7 +847,7 @@ const {
 });
 ```
 
----
+ 
 
 ## Key Takeaways
 
@@ -858,7 +858,7 @@ const {
 ✅ **Destructuring friendly** - Easy to extract what you need
 ✅ **Syntactic sugar** - Same as individual ref() calls, just cleaner
 
----
+ 
 
 ## What's Next?
 
@@ -869,7 +869,7 @@ Now that you understand `refs()`, explore:
 - **`createCollection()`** - Reactive arrays with methods
 - **`builder()`** - Chainable state construction
 
----
+ 
 
 ## Summary
 

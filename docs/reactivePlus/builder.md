@@ -16,7 +16,7 @@ app.increment(); // ✨ Runs action, updates computed, triggers watch, updates D
 
 **That's it.** Chain your state configuration, call `.build()`, and get a fully-wired reactive state with computed properties, watchers, effects, bindings, and custom actions.
 
----
+ 
 
 ## What is `builder()`?
 
@@ -26,7 +26,7 @@ Think of it as **using a construction blueprint where you specify every feature 
 
 **In practical terms:** Instead of calling `state()`, then `computed()`, then `watch()`, then `bindings()` separately, you chain them all together in one readable flow.
 
----
+ 
 
 ## Syntax
 
@@ -91,7 +91,7 @@ app.state.addPoints(50); // ✨ Updates state, triggers watch, updates DOM
 **Returns:**
 - Builder object with `.state` property containing the reactive state
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -231,7 +231,7 @@ All Updates Automatic
 ✅ **Clean code** - Declarative setup, no manual wiring
 ✅ **Easy cleanup** - Single `.destroy()` call removes everything
 
----
+ 
 
 ## Mental Model: Factory Assembly Line
 
@@ -280,7 +280,7 @@ Think of `builder()` like **a factory assembly line** where you specify all the 
 
 You **specify the blueprint**, then **build once** to get a complete, working reactive state.
 
----
+ 
 
 ## How Does It Work?
 
@@ -333,7 +333,7 @@ result.state.count = 5; // Everything reacts automatically
 **Key Insight:**
 Each builder method returns `this`, allowing you to chain calls. The `.build()` method finalizes everything and returns an object with the reactive `state` and a `destroy()` method for cleanup.
 
----
+ 
 
 ## Basic Usage
 
@@ -356,7 +356,7 @@ console.log(counter.state.double); // 10 (auto-updated)
 console.log(counter.state.triple); // 15 (auto-updated)
 ```
 
----
+ 
 
 ### Example 2: With Watchers
 
@@ -382,7 +382,7 @@ user.state.email = 'bob@example.com';
 // Console: "Email updated to: bob@example.com"
 ```
 
----
+ 
 
 ### Example 3: With DOM Bindings
 
@@ -402,7 +402,7 @@ app.state.version = '2.0.0';
 // ✨ All bindings update automatically
 ```
 
----
+ 
 
 ### Example 4: With Actions
 
@@ -436,7 +436,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 5: Complete Builder Chain
 
@@ -485,7 +485,7 @@ todo.state.addTodo('Walk dog');
 // ✨ Computed values update, watchers trigger, DOM syncs
 ```
 
----
+ 
 
 ### Example 6: User Profile with Validation
 
@@ -563,7 +563,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 7: Shopping Cart
 
@@ -625,7 +625,7 @@ cart.state.addItem({ id: 2, name: 'Mouse', price: 29 });
 // ✨ All totals recalculate automatically
 ```
 
----
+ 
 
 ### Example 8: Search with Filters
 
@@ -676,7 +676,7 @@ const products = builder({
 .build();
 ```
 
----
+ 
 
 ### Example 9: Game Score Tracker
 
@@ -738,7 +738,7 @@ const game = builder({
 .build();
 ```
 
----
+ 
 
 ### Example 10: Theme Manager
 
@@ -794,7 +794,7 @@ const theme = builder({
 .build();
 ```
 
----
+ 
 
 ## Advanced Usage: Multiple Effects
 
@@ -812,7 +812,7 @@ logger.state.events.push('New event');
 // Both effects run automatically
 ```
 
----
+ 
 
 ## Advanced Usage: Chaining Actions
 
@@ -841,7 +841,7 @@ app.state
   .log(); // Value: 2
 ```
 
----
+ 
 
 ## Advanced Usage: Complex Computed Dependencies
 
@@ -881,7 +881,7 @@ const analytics = builder({
 .build();
 ```
 
----
+ 
 
 ## Cleanup and Disposal
 
@@ -901,7 +901,7 @@ temp.destroy();
 temp.state.value = 10; // Nothing happens (cleaned up)
 ```
 
----
+ 
 
 ## builder() vs Other Approaches
 
@@ -940,7 +940,7 @@ computed(app, { double: function() { return this.count * 2; } });
 ❌ Only need bindings (use `createState()`)
 ❌ Prefer functional composition over chaining
 
----
+ 
 
 ## Key Takeaways
 
@@ -951,7 +951,7 @@ computed(app, { double: function() { return this.count * 2; } });
 ✅ **Flexible** - Use only the methods you need, skip the rest
 ✅ **Access via .state** - Final state accessible via `result.state`
 
----
+ 
 
 ## What's Next?
 
@@ -961,7 +961,7 @@ Now that you understand `builder()`, explore:
 - **`store()`** - Global state management with getters and actions
 - **`computed()`** - Add computed properties to existing state
 
----
+ 
 
 ## Summary
 

@@ -14,7 +14,7 @@ In this tutorial, we'll build a **fully functional Todo App** from scratch using
 
 By the end, you'll have a real, working app and the confidence to build your own projects!
 
----
+ 
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Make sure you've completed:
 
 Ready? Let's build something awesome! 🚀
 
----
+ 
 
 ## Step 1: Setting Up the HTML
 
@@ -101,7 +101,7 @@ First, let's create our page structure. Every todo app needs:
 - **Footer** — Count, filters, and clear button
 - **Empty State** — Message when there are no todos
 
----
+ 
 
 ## Step 2: Adding Basic Styles
 
@@ -287,7 +287,7 @@ body {
 
 **Try it:** Open your HTML file in a browser. You should see a beautiful purple app shell!
 
----
+ 
 
 ## Step 3: Creating the State
 
@@ -322,7 +322,7 @@ console.log('App state created:', todoApp);
 
 **Check:** Open browser console. You should see "App state created" with our state object!
 
----
+ 
 
 ## Step 4: Adding Computed Properties
 
@@ -380,7 +380,7 @@ console.log('Is empty:', todoApp.isEmpty);
 
 **Key insight:** These values automatically recalculate when `todos` or `filter` changes!
 
----
+ 
 
 ## Step 5: Rendering the Todo List
 
@@ -434,7 +434,7 @@ function escapeHtml(text) {
 
 **Note:** The list won't show anything yet because `todos` is empty. That's next!
 
----
+ 
 
 ## Step 6: Adding New Todos
 
@@ -502,7 +502,7 @@ Elements.addTodoBtn.addEventListener('click', addTodo);
 3. New todo object is created and pushed to `todos` array
 4. Effect detects `todos` changed → re-renders the list
 
----
+ 
 
 ## Step 7: Toggling and Deleting Todos
 
@@ -562,7 +562,7 @@ Elements.todoList.addEventListener('click', (e) => {
 **Why event delegation?**
 Instead of adding listeners to each checkbox/button (which would need to be redone every render), we add ONE listener to the list and check what was clicked. More efficient!
 
----
+ 
 
 ## Step 8: Updating the Footer
 
@@ -604,7 +604,7 @@ effect(() => {
 - Complete one → "1 item left", Clear button appears
 - Delete all → Empty state shows
 
----
+ 
 
 ## Step 9: Filter Functionality
 
@@ -641,7 +641,7 @@ Collections.ClassName.filterBtn.forEach(btn => {
 
 **The magic:** When `filter` changes, the computed `filteredTodos` recalculates, and the render effect runs!
 
----
+ 
 
 ## Step 10: Clear Completed
 
@@ -666,7 +666,7 @@ Elements.clearCompleted.addEventListener('click', clearCompleted);
 - Click "Clear Completed"
 - Completed todos disappear!
 
----
+ 
 
 ## Step 11: Saving to localStorage
 
@@ -712,7 +712,7 @@ loadTodos();
 2. Refresh the page
 3. Todos are still there! 🎉
 
----
+ 
 
 ## Step 12: Final Polish
 
@@ -756,7 +756,7 @@ document.addEventListener('keydown', (e) => {
 });
 ```
 
----
+ 
 
 ## The Complete Code
 
@@ -949,7 +949,7 @@ try {
 console.log('✅ Todo App Ready!');
 ```
 
----
+ 
 
 ## What You Built! 🎉
 
@@ -965,7 +965,7 @@ Congratulations! You've built a complete Todo app with:
 | Clear completed | Array filter + state update |
 | Persistence | Effect + localStorage |
 
----
+ 
 
 ## Key Concepts Recap
 
@@ -999,7 +999,7 @@ Collections.ClassName.cls // Access by class
 ```
 Clean, easy DOM access.
 
----
+ 
 
 ## Challenge: Extend the App! 🚀
 
@@ -1013,7 +1013,7 @@ Ready to practice more? Try adding:
 
 Each feature is a chance to practice what you've learned!
 
----
+ 
 
 ## You Did It! 🏆
 

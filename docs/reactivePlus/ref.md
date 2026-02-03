@@ -18,7 +18,7 @@ count.value++; // ✨ DOM updates automatically!
 
 **That's it.** `ref()` wraps a single value (number, string, boolean) in a reactive container. Change `.value` and all effects re-run automatically.
 
----
+ 
 
 ## What is `ref()`?
 
@@ -28,7 +28,7 @@ Think of it as **putting a value in a smart container** that can be tracked and 
 
 **In practical terms:** You need a ref when you want a single reactive value, not a whole object. Instead of `state({ count: 0 })` where you access `count.count`, you use `ref(0)` and access `count.value`.
 
----
+ 
 
 ## Syntax
 
@@ -63,7 +63,7 @@ const price = ref(29.99);
 **Properties:**
 - `.value` - Get or set the current value (reactive)
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -173,7 +173,7 @@ No manual calls needed
 ✅ **No manual sync** - UI updates automatically
 ✅ **Less code** - 80% less boilerplate than vanilla JS
 
----
+ 
 
 ## Mental Model: Smart Box
 
@@ -214,7 +214,7 @@ Think of `ref()` like **putting a value in a smart box with a viewing window**:
 
 You access the value through the **window** (`.value` property), and the box **notifies everyone** when it changes.
 
----
+ 
 
 ## How Does It Work?
 
@@ -264,7 +264,7 @@ count.value = 5; // Effect re-runs
 **Key Insight:**
 `ref()` is just **syntactic sugar** for `state({ value: ... })`. It makes working with single primitive values cleaner and more intuitive.
 
----
+ 
 
 ## Basic Usage
 
@@ -289,7 +289,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 2: Text Input Sync
 
@@ -313,7 +313,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 3: Boolean Toggle
 
@@ -341,7 +341,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 4: Number Input with Validation
 
@@ -373,7 +373,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 5: Progress Tracker
 
@@ -403,7 +403,7 @@ const interval = setInterval(() => {
 }, 500);
 ```
 
----
+ 
 
 ### Example 6: Search Query
 
@@ -436,7 +436,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 7: Timer/Countdown
 
@@ -467,7 +467,7 @@ const timer = setInterval(() => {
 }, 1000);
 ```
 
----
+ 
 
 ### Example 8: Color Picker
 
@@ -494,7 +494,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 9: Font Size Adjuster
 
@@ -532,7 +532,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 10: Temperature Converter
 
@@ -560,7 +560,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ## Deep Dive: Understanding ref() Internals
 
@@ -679,7 +679,7 @@ const obj = state({ count: 0 });
 obj.count = 5; // ✅ Triggers effect
 ```
 
----
+ 
 
 ## Advanced Usage: Computed with Refs
 
@@ -707,7 +707,7 @@ effect(() => {
 
 **Note:** For multiple related values, consider using `state()` instead of multiple refs.
 
----
+ 
 
 ## Advanced Usage: Watchers with Refs
 
@@ -728,7 +728,7 @@ score.value = 150; // Console: "Score changed from 50 to 150", "High score!"
 
 **Note:** `watch()` on a ref requires special handling. Check the watch() documentation for details.
 
----
+ 
 
 ## Advanced Usage: Refs in Arrays
 
@@ -745,7 +745,7 @@ effect(() => {
 refs[0].value = 10; // Effect runs, sum updates
 ```
 
----
+ 
 
 ## ref() vs state()
 
@@ -775,7 +775,7 @@ counter.count = 5;
 ✅ Nested properties
 ✅ You prefer direct property access
 
----
+ 
 
 ## Refs with Bindings
 
@@ -791,7 +791,7 @@ bindings({
 count.value = 15; // ✨ All bindings update
 ```
 
----
+ 
 
 ## Combining Multiple Refs
 
@@ -825,7 +825,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## valueOf() and toString()
 
@@ -844,7 +844,7 @@ const result = double * 2;   // 20 (uses valueOf)
 
 **Note:** While convenient, explicitly using `.value` is clearer and recommended.
 
----
+ 
 
 ## Common Patterns
 
@@ -935,7 +935,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ## Common Pitfalls
 
@@ -981,7 +981,7 @@ const user = state({
 });
 ```
 
----
+ 
 
 ## Key Takeaways
 
@@ -992,7 +992,7 @@ const user = state({
 ✅ **Use for single values** - For objects, prefer `state()`
 ✅ **Clean and simple** - Perfect for counters, flags, simple inputs
 
----
+ 
 
 ## What's Next?
 
@@ -1008,7 +1008,7 @@ Now that you understand `ref()`, explore:
 - [What is ReactivePlus?](what-is-ReactivePlus.md) - Understanding the reactive system
 - [Essential Patterns](essential-patterns.md) - Common patterns and best practices
 
----
+ 
 
 ## Summary
 

@@ -10,7 +10,7 @@ In this tutorial, you'll master how to combine **reactive state** with the **Cor
 
 By the end, you'll be able to build dynamic UIs that update themselves beautifully.
 
----
+ 
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Make sure you're comfortable with:
 
 If not, check out the [Getting Started](getting-started.md) guide first!
 
----
+ 
 
 ## Part 1: Elements — Your Single Element Friend
 
@@ -38,7 +38,7 @@ Elements.myButton.textContent = 'Click me';
 
 Same result, cleaner code. But here's where it gets interesting...
 
----
+ 
 
 ### Elements + Reactive State = Magic
 
@@ -97,7 +97,7 @@ user.name = 'Alice Smith';
 // ✨ Only the name effect runs
 ```
 
----
+ 
 
 ### Elements.update() — The Batch Updater
 
@@ -142,7 +142,7 @@ Elements.update({
 - ✅ Easier to read and maintain
 - ✅ One effect instead of many
 
----
+ 
 
 ### Real Example: A Counter with Multiple Displays
 
@@ -209,7 +209,7 @@ Elements.clearBtn.addEventListener('click', () => {
 
 **The beautiful part:** All three buttons just modify `cart.count`. The effect handles ALL the UI updates automatically!
 
----
+ 
 
 ## Part 2: Collections — Working with Groups
 
@@ -227,7 +227,7 @@ Collections.ClassName.menuItem
 
 **Note:** Class names with hyphens become camelCase: `menu-item` → `menuItem`
 
----
+ 
 
 ### Collections + Reactive State
 
@@ -276,7 +276,7 @@ function receiveNotification() {
 2. We loop through them with `forEach`
 3. Each one gets updated with the new count
 
----
+ 
 
 ### Collections.update() — Batch Update for Groups
 
@@ -295,7 +295,7 @@ effect(() => {
 
 This updates **ALL** elements with that class in one go!
 
----
+ 
 
 ### Real Example: A Tab System
 
@@ -356,7 +356,7 @@ Both effects run:
 User sees the switch instantly ✨
 ```
 
----
+ 
 
 ### Iterating with Collections
 
@@ -375,7 +375,7 @@ const cards = Array.from(Collections.ClassName.card);
 const visibleCards = cards.filter(card => card.dataset.visible === 'true');
 ```
 
----
+ 
 
 ## Part 3: Selector — CSS Power
 
@@ -391,7 +391,7 @@ Selector.query('.sidebar .active-link')
 Selector.queryAll('nav > a')
 ```
 
----
+ 
 
 ### When to Use Each Helper
 
@@ -402,7 +402,7 @@ Selector.queryAll('nav > a')
 | `Selector.query()` | Complex CSS selector (single result) |
 | `Selector.queryAll()` | Complex CSS selector (multiple results) |
 
----
+ 
 
 ### Selector + Reactive State
 
@@ -449,7 +449,7 @@ Selector.queryAll('nav a[data-page]').forEach(link => {
 - We need links with a specific attribute
 - CSS selector `nav a[data-page]` captures exactly what we need
 
----
+ 
 
 ### Real Example: Form with Validation Styling
 
@@ -526,7 +526,7 @@ Selector.query('#password').addEventListener('input', (e) => {
 });
 ```
 
----
+ 
 
 ## Combining All Three
 
@@ -602,7 +602,7 @@ Collections.ClassName.filterBtn.forEach(btn => {
 - **Collections** for the `.filter-btn` group
 - **Selector** for complex queries like `.product[data-category="electronics"]`
 
----
+ 
 
 ## Best Practices Summary
 
@@ -662,7 +662,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## What You've Learned 🎓
 
@@ -675,7 +675,7 @@ effect(() => {
 | `Selector.query()` | CSS selector for one element |
 | `Selector.queryAll()` | CSS selector for multiple elements |
 
----
+ 
 
 ## Practice Challenge 🚀
 
@@ -707,7 +707,7 @@ Build a **shopping list** with these features:
 
 Give it a try! Use what you've learned about Elements, Collections, and Selector.
 
----
+ 
 
 ## Next Steps
 

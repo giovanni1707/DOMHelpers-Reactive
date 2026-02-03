@@ -8,7 +8,7 @@ Seriously, it's **that simple**. Add a few `<script>` tags to your HTML, and you
 
 Just copy, paste, and start coding.
 
----
+ 
 
 ## The Full Stack (4 Script Tags)
 
@@ -53,7 +53,7 @@ Want everything? Here's the complete setup:
 
 No installation. No configuration. No build step.
 
----
+ 
 
 ## What You Just Got
 
@@ -68,7 +68,7 @@ With those 4 script tags, you now have:
 
 **Everything you need to build modern web apps.**
 
----
+ 
 
 ## Mix and Match: Load Only What You Need
 
@@ -106,7 +106,7 @@ Want cleaner DOM manipulation without reactive state? Load just the first two:
 - Progressive enhancement
 - Projects that don't need reactive state
 
----
+ 
 
 ### Option 2: Core + Reactive (Skip Enhancers & Conditions)
 
@@ -135,7 +135,7 @@ Want reactive state with basic DOM manipulation? Load just Core and Reactive:
 - When you don't need bulk updaters or conditions
 - Minimal bundle size
 
----
+ 
 
 ### Option 3: Core + Enhancers (No Reactivity, No Conditions)
 
@@ -167,7 +167,7 @@ Want bulk operations without reactive state?
 - When you want cleaner code but not reactive state
 - Server-rendered apps with light JavaScript
 
----
+ 
 
 ### Option 4: Core + Conditions (Conditional Rendering Only)
 
@@ -206,7 +206,7 @@ Want declarative conditions without full reactivity?
 - When you want declarative logic without reactivity
 - Simple state machines
 
----
+ 
 
 ### Option 5: The Full Stack (Everything)
 
@@ -243,7 +243,7 @@ Want the complete power? Load all four:
 - Maximum productivity
 - When you want all the power
 
----
+ 
 
 ## Quick Reference: What Each Script Gives You
 
@@ -258,7 +258,7 @@ Want the complete power? Load all four:
 
 *Approximate sizes - actual may vary
 
----
+ 
 
 ## Decision Guide: What Should You Load?
 
@@ -277,7 +277,7 @@ Want the complete power? Load all four:
 ### "I'm not sure what I need"
 → **Load all 4 scripts** - You can always remove what you don't use later
 
----
+ 
 
 ## Real Examples: What You Can Build
 
@@ -322,7 +322,7 @@ Want the complete power? Load all four:
 
 **2 scripts. Clean code. Done.**
 
----
+ 
 
 ### Example 2: Reactive Counter (Core + Reactive)
 
@@ -362,7 +362,7 @@ Want the complete power? Load all four:
 
 **2 scripts. Reactive. Automatic updates.**
 
----
+ 
 
 ### Example 3: Full Featured App (All 4)
 
@@ -422,7 +422,7 @@ Want the complete power? Load all four:
 
 **4 scripts. Complete reactive todo app. ~60 lines total.**
 
----
+ 
 
 ## Loading Order Matters
 
@@ -446,7 +446,7 @@ When you load multiple scripts, **order matters**:
 
 **Easy rule:** Load scripts in numerical order (01, 02, 03, 04).
 
----
+ 
 
 ## Common Combinations
 
@@ -458,7 +458,7 @@ Here are the most common setups:
 ```
 **Use for:** Basic element access, no frills
 
----
+ 
 
 ### Standard (Core + Enhancers)
 ```html
@@ -467,7 +467,7 @@ Here are the most common setups:
 ```
 **Use for:** Clean DOM manipulation, forms, bulk operations
 
----
+ 
 
 ### Reactive (Core + Reactive)
 ```html
@@ -476,7 +476,7 @@ Here are the most common setups:
 ```
 **Use for:** Reactive apps without bulk updaters
 
----
+ 
 
 ### Full Power (All Four)
 ```html
@@ -487,7 +487,7 @@ Here are the most common setups:
 ```
 **Use for:** Complete feature set, maximum productivity
 
----
+ 
 
 ## Comparison: Before vs After
 
@@ -521,7 +521,7 @@ Here are the most common setups:
 - Repetitive `document.getElementById()`
 - Easy to forget to update UI
 
----
+ 
 
 ### After (DOM Helpers + Reactive)
 
@@ -555,7 +555,7 @@ Here are the most common setups:
 - ✅ Clean element access
 - ✅ Impossible to forget UI updates
 
----
+ 
 
 ## That's It!
 
@@ -578,7 +578,7 @@ Here are the most common setups:
 - ✅ Your code
 - ✅ Done
 
----
+ 
 
 ## Quick Start Template
 
@@ -623,7 +623,7 @@ Copy this to get started right now:
 
 **Copy. Paste. Build.**
 
----
+ 
 
 ## Summary
 
@@ -651,7 +651,7 @@ Copy this to get started right now:
 
 **It really is that simple.**
 
----
+ 
 
 ## What's Next?
 

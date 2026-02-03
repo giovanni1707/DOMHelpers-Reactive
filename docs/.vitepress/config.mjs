@@ -562,8 +562,6 @@ export default defineConfig({
             { text: "slice", link: "/collection-operations/slice" },
           ],
         },
-
-
       ],
 
       // Shared sidebar for form-related routes
@@ -691,19 +689,17 @@ export default defineConfig({
               link: "/reactivePlus/effect",
             },
 
-
-             {
+            {
               text: "Effects",
               link: "/reactivePlus/effects",
             },
 
-
-{
+            {
               text: "Computed",
               link: "/reactivePlus/computed",
             },
 
-{
+            {
               text: "Watch",
               link: "/reactivePlus/watch",
             },
@@ -731,6 +727,72 @@ export default defineConfig({
             {
               text: "Filtered Collection",
               link: "/reactivePlus/filteredCollection",
+            },
+          ],
+        },
+
+        {
+          text: "Learn More",
+          collapsed: true,
+          items: [
+            {
+              text: "Batching",
+              link: "/reactivePlus/batch",
+            },
+            {
+              text: "Collection Creation ",
+              link: "/reactivePlus/collection",
+            },
+            {
+              text: "AsyncState",
+              link: "/reactivePlus/asyncState",
+            },
+            {
+              text: "Store",
+              link: "/reactivePlus/store",
+            },
+            {
+              text: "Binding",
+              link: "/reactivePlus/binding",
+            },
+            {
+              text: "LifeCycle",
+              link: "/reactivePlus/lifecycle",
+            },
+            {
+              text: "Migration Guide",
+              link: "/reactivePlus/migration-guide",
+            },
+          ],
+        },
+
+        {
+          text: "Tutorials",
+          collapsed: true,
+          items: [
+            {
+              text: "Getting Started",
+              link: "/reactivePlus/getting-started",
+            },
+            {
+              text: "Reactive With Core ",
+              link: "/reactivePlus/reactive-with-core",
+            },
+            {
+              text: "Reactive With Enhancers",
+              link: "/reactivePlus/reactive-with-enhancers",
+            },
+            {
+              text: "Reactive With Conditions",
+              link: "/reactivePlus/reactive-with-conditions",
+            },
+            {
+              text: "Building A Todo App",
+              link: "/reactivePlus/building-a-todo-app",
+            },
+            {
+              text: "Best Practices",
+              link: "/reactivePlus/best-practices",
             },
           ],
         },

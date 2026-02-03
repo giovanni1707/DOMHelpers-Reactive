@@ -23,7 +23,7 @@ user.status = 'away';
 
 **That's it.** The callback runs every time the watched property changes, giving you both the new and old values.
 
----
+ 
 
 ## What is `watch()`?
 
@@ -33,7 +33,7 @@ Think of it as **setting up a motion sensor for specific doors**. Instead of mon
 
 **In practical terms:** Use watch when you need to know what changed, what the old value was, and perform specific actions in response.
 
----
+ 
 
 ## Syntax
 
@@ -67,7 +67,7 @@ stopWatching();
 **Returns:**
 - A cleanup function that stops all watchers when called
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -134,7 +134,7 @@ watch(user, {
 ✅ Perfect for auditing and logging
 ✅ Ideal for conditional logic based on change
 
----
+ 
 
 ## Mental Model: The Security Camera
 
@@ -172,7 +172,7 @@ Think of `watch()` like **security cameras with motion detection**:
 
 **Key Insight:** Watch gives you specific, detailed information about exactly what changed.
 
----
+ 
 
 ## How Does It Work?
 
@@ -231,7 +231,7 @@ user.status = 'offline';
 // Calls callback('offline', 'away')
 ```
 
----
+ 
 
 ## Basic Usage
 
@@ -250,7 +250,7 @@ counter.count = 5;  // "Count: 0 → 5"
 counter.count = 10; // "Count: 5 → 10"
 ```
 
----
+ 
 
 ### Example 2: Multiple Property Watches
 
@@ -277,7 +277,7 @@ watch(settings, {
 });
 ```
 
----
+ 
 
 ### Example 3: Conditional Actions Based on Values
 
@@ -320,7 +320,7 @@ watch(gameState, {
 });
 ```
 
----
+ 
 
 ### Example 4: Stopping a Watch
 
@@ -343,7 +343,7 @@ data.value = 3; // Nothing logged - watch stopped
 data.value = 4; // Nothing logged - watch stopped
 ```
 
----
+ 
 
 ### Example 5: Form Field Validation on Change
 
@@ -378,7 +378,7 @@ watch(form, {
 });
 ```
 
----
+ 
 
 ## Watch with DOM Helpers
 
@@ -414,7 +414,7 @@ watch(user, {
 });
 ```
 
----
+ 
 
 ### Example 2: Cart Item Count Badge
 
@@ -445,7 +445,7 @@ watch(cart, {
 });
 ```
 
----
+ 
 
 ### Example 3: Theme Transition
 
@@ -479,7 +479,7 @@ watch(app, {
 });
 ```
 
----
+ 
 
 ## Real-World Examples
 
@@ -542,7 +542,7 @@ function redo() {
 }
 ```
 
----
+ 
 
 ### Example 2: Real-Time Sync Indicator
 
@@ -590,7 +590,7 @@ watch(syncState, {
 });
 ```
 
----
+ 
 
 ### Example 3: Authentication State Handler
 
@@ -647,7 +647,7 @@ watch(auth, {
 });
 ```
 
----
+ 
 
 ### Example 4: Data Change Auditing
 
@@ -691,7 +691,7 @@ watch(sensitiveData, {
 });
 ```
 
----
+ 
 
 ### Example 5: Progress Tracker with Milestones
 
@@ -733,7 +733,7 @@ watch(progress, {
 });
 ```
 
----
+ 
 
 ## Common Patterns
 
@@ -755,7 +755,7 @@ watch(searchState, {
 });
 ```
 
----
+ 
 
 ### Pattern 2: Comparison-Based Actions
 
@@ -774,7 +774,7 @@ watch(metrics, {
 });
 ```
 
----
+ 
 
 ### Pattern 3: External System Sync
 
@@ -791,7 +791,7 @@ watch(localState, {
 });
 ```
 
----
+ 
 
 ### Pattern 4: Analytics Tracking
 
@@ -807,7 +807,7 @@ watch(userActions, {
 });
 ```
 
----
+ 
 
 ### Pattern 5: Storage Persistence
 
@@ -825,7 +825,7 @@ watch(preferences, {
 });
 ```
 
----
+ 
 
 ## Important Notes
 
@@ -846,7 +846,7 @@ data.value = 'updated';
 // Now logs: "Changed: initial → updated"
 ```
 
----
+ 
 
 ### 2. Same Value Doesn't Trigger Watch
 
@@ -864,7 +864,7 @@ data.value = 10; // "Value changed!"
 data.value = 10; // Nothing logged - same value
 ```
 
----
+ 
 
 ### 3. Watch Returns Cleanup Function
 
@@ -883,7 +883,7 @@ cleanup();
 data.count = 2; // Nothing logged
 ```
 
----
+ 
 
 ### 4. Watching Nested Properties
 
@@ -910,7 +910,7 @@ watch(user, {
 user.profile.name = 'Bob'; // "Name: Alice → Bob"
 ```
 
----
+ 
 
 ## Summary
 

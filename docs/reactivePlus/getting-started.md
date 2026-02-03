@@ -6,7 +6,7 @@ You're about to learn something that will change how you build web applications 
 
 **No frameworks needed.** Just JavaScript and a few simple concepts.
 
----
+ 
 
 ## What Will You Learn?
 
@@ -19,7 +19,7 @@ By the end of this tutorial, you'll be able to:
 
 Let's start with a question...
 
----
+ 
 
 ## The Problem We're Solving
 
@@ -56,7 +56,7 @@ You could just say "hey, whenever `count` changes, update these things" and it j
 
 That's exactly what we're going to build. 🎉
 
----
+ 
 
 ## Your First Reactive Example
 
@@ -87,7 +87,7 @@ Elements.incrementBtn.addEventListener('click', () => {
 
 **No manual updates. No forgotten elements. It just works.**
 
----
+ 
 
 ## Understanding the Building Blocks
 
@@ -111,7 +111,7 @@ const smart = state({ name: 'Alice' });
 
 They look the same, but the reactive one has superpowers!
 
----
+ 
 
 ### 🧱 Building Block 2: `effect()`
 
@@ -136,7 +136,7 @@ weather.temperature = 85;
 // Console automatically logs: "Too hot! Turning on AC..."
 ```
 
----
+ 
 
 ### 🧱 Building Block 3: DOM Helpers (`Elements`, `Collections`, `Selector`)
 
@@ -161,7 +161,7 @@ Elements.title.textContent = 'Hello';
 
 Much cleaner! 🧹
 
----
+ 
 
 ## Let's Build Something Real
 
@@ -253,7 +253,7 @@ Elements.nameInput.addEventListener('input', (e) => {
 
 **The magic:** You never manually update the greeting. Just change the data, and the UI follows.
 
----
+ 
 
 ## Making It Even Cleaner
 
@@ -286,7 +286,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ## The Flow: How It All Connects
 
@@ -330,7 +330,7 @@ Let's visualize what happens when the user interacts with our app:
 
 **Key insight:** You only write steps 2 and 5 (update state, define effect). The system handles everything in between!
 
----
+ 
 
 ## Quick Reference Card
 
@@ -378,7 +378,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ## Common Beginner Questions
 
@@ -424,7 +424,7 @@ const stopEffect = effect(() => {
 stopEffect();
 ```
 
----
+ 
 
 ## What's Next?
 
@@ -443,7 +443,7 @@ You're ready to explore more:
 | [Reactive with Conditions](reactive-with-conditions.md) | Show/hide, conditional rendering |
 | [Building a Todo App](building-a-todo-app.md) | Complete hands-on project |
 
----
+ 
 
 ## Try It Yourself! 🚀
 
@@ -471,7 +471,7 @@ effect(() => {
 
 Give it a try! The best way to learn is by doing. 💪
 
----
+ 
 
 ## Summary
 

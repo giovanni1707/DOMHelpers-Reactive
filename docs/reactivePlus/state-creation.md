@@ -17,7 +17,7 @@ effect(() => {
  
 **That's it.** Change `counter.count`, and the DOM updates automatically. No `setState()`, no manual updates, no framework needed.
  
----
+ 
  
 ## What is `state()`?
  
@@ -27,7 +27,7 @@ Think of it as **upgrading a regular object into a smart home system**. A regula
  
 **In practical terms:** When you create state with `state()`, you get back a special version of your object. This object looks and acts like a normal object, but behind the scenes it's watching every property change and can trigger automatic updates to your UI, computed values, and side effects.
  
----
+ 
  
 ## Syntax
  
@@ -49,7 +49,7 @@ const user = state({
 **Returns:**
 - A reactive proxy that wraps your object with automatic change tracking
  
----
+ 
  
 ## Why Does This Exist?
  
@@ -161,7 +161,7 @@ Update counter.count
 ✅ **Scales easily** - Add 100 reactions to the same state, no problem
 ✅ **Less code** - Write the update logic once, it runs whenever needed
  
----
+ 
  
 ## Mental Model: The Smart House
  
@@ -197,7 +197,7 @@ Think of reactive state like a **smart home system**:
  
 When you change the temperature in a smart home, **sensors detect it** and **trigger automated responses**. That's exactly what reactive state does with your data!
  
----
+ 
  
 ## How Does It Work?
  
@@ -259,7 +259,7 @@ counter.count++; // State says: "counter.count changed, notify its effects!"
 console.log(counter.count); // Logs new value
 ```
  
----
+ 
  
 ## Basic Usage
  
@@ -283,7 +283,7 @@ console.log(counter.count); // 6
 - You can read and write properties normally
 - Behind the scenes, every change is tracked
  
----
+ 
  
 ### Example 2: User Profile with DOM Updates
  
@@ -315,7 +315,7 @@ user.avatar = '👨';     // ✨ DOM updates automatically
 user.status = 'away';   // ✨ DOM updates automatically
 ```
  
----
+ 
  
 ### Example 3: Nested Objects Work Too
  
@@ -347,7 +347,7 @@ app.user.profile.settings.theme = 'light'; // ✨ Body class updates
 - You can change deep properties and effects still track them
 - No special syntax needed
  
----
+ 
  
 ### Example 4: Multiple Properties in One State
  
@@ -387,7 +387,7 @@ todos.darkMode = true; // ✨ Second effect runs
 **Key Insight:**
 Effects are **smart** — they only re-run when properties **they actually read** change. This is called **fine-grained reactivity**.
  
----
+ 
  
 ### Example 5: Working with Arrays
  
@@ -413,7 +413,7 @@ playlist.currentIndex = 1;               // ✨ DOM updates
  
 **Note:** For more advanced array operations, check out `collection()` which provides array-specific reactive methods.
  
----
+ 
  
 ### Example 6: Form State with DOM Helpers
  
@@ -463,7 +463,7 @@ Elements.update({
 });
 ```
  
----
+ 
  
 ### Example 7: Conditional DOM Updates
  
@@ -512,7 +512,7 @@ setTimeout(() => {
 }, 1000);
 ```
  
----
+ 
  
 ### Example 8: Computed-Like Patterns (Before Learning `computed()`)
  
@@ -540,7 +540,7 @@ cart.items[1].quantity = 3; // ✨ Total recalculates and DOM updates
  
 **Note:** This works, but `computed()` provides a more elegant solution for derived values.
  
----
+ 
  
 ### Example 9: Multiple States Working Together
  
@@ -573,7 +573,7 @@ prefs.theme = 'dark';           // Only first effect runs
 data.items.push('Item 4');      // Only second effect runs
 ```
  
----
+ 
  
 ### Example 10: Realistic Dashboard Example
  
@@ -637,7 +637,7 @@ Collections.ClassName.periodOption.on('click', (e) => {
 });
 ```
  
----
+ 
  
 ## Deep Dive: Understanding State Behavior
  
@@ -659,7 +659,7 @@ console.log(original.count); // Still 0
  
 **Key Takeaway:** State creates a new reactive wrapper around your data. The original object is preserved.
  
----
+ 
  
 ### State Makes Nested Objects Reactive Automatically
  
@@ -686,7 +686,7 @@ app.user.profile.name = 'Bob'; // ✨ Effect runs
 - Every level of nesting is automatically reactive
 - This is called **deep reactivity**
  
----
+ 
  
 ### State Doesn't Wrap Everything
  
@@ -709,7 +709,7 @@ app.date.getTime();                // Regular Date object
 **Why?**
 Built-in objects like DOM elements, Dates, and Promises have special behavior that would break if wrapped in a Proxy. State is smart enough to leave them alone.
  
----
+ 
  
 ### Comparing State to Plain JavaScript
  
@@ -766,7 +766,7 @@ user.name = 'Charlie'; // ✨ Still works!
 - Impossible to forget updates
 - Scales to any complexity
  
----
+ 
  
 ### Working with Arrays in State
  
@@ -787,7 +787,7 @@ todos.items.splice(1, 1);          // ✨ Effect runs
  
 **For even better array handling**, use `collection()` which adds methods like `.add()`, `.remove()`, `.toggle()` specifically designed for reactive arrays.
  
----
+ 
  
 ### State with DOM Helpers: A Perfect Match
  
@@ -829,7 +829,7 @@ Elements.update({
 - Together they feel like a lightweight framework
 - But it's just JavaScript!
  
----
+ 
  
 ## Common Patterns
  
@@ -856,7 +856,7 @@ Elements.update({
 });
 ```
  
----
+ 
  
 ### Pattern 2: Increment/Decrement
  
@@ -882,7 +882,7 @@ Elements.update({
 });
 ```
  
----
+ 
  
 ### Pattern 3: Batch Multiple Updates
  
@@ -904,7 +904,7 @@ function updateUser(data) {
  
 **Note:** For even better batching control, use `batch()` which we'll cover in its own documentation.
  
----
+ 
  
 ### Pattern 4: Reset to Initial State
  
@@ -929,7 +929,7 @@ Elements.update({
 });
 ```
  
----
+ 
  
 ## Key Takeaways
  
@@ -940,7 +940,7 @@ Elements.update({
 ✅ **Foundation for everything else** - `effect()`, `computed()`, `watch()` all build on state
 ✅ **No manual updates needed** - Change the data, effects run automatically
  
----
+ 
  
 ## What's Next?
 
@@ -957,7 +957,7 @@ Now that you understand `state()`, you're ready for:
 - [Essential Patterns](essential-patterns.md) - Common patterns and best practices
 - [collection()](../reactivity-function/collection.md) - Enhanced arrays with reactive methods
  
----
+ 
  
 ## Summary
  

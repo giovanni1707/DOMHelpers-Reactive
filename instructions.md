@@ -26,7 +26,7 @@ The documentation clearly shows how much more powerful and expressive reactivity
 
 > The goal is to clearly demonstrate how **powerful, clean, and expressive reactivity becomes when combined with DOM Helpers Core**, compared to using plain JavaScript.
 
----
+ 
 
 ### 📂 Input Context
 
@@ -44,7 +44,7 @@ The documentation clearly shows how much more powerful and expressive reactivity
   * Reactive-friendly DOM manipulation
   * Cleaner APIs than native DOM methods
 
----
+ 
 
 ### 🔁 Your Main Task
 - first  a new folder for future documentation files creation.
@@ -69,7 +69,7 @@ With DOM Helpers Core APIs
 
 While keeping explanations simple and beginner-friendly
 
----
+ 
 
 ### 🧠 How to Rewrite the Documentation
 
@@ -100,7 +100,7 @@ For **every module, method, and example**:
    * How reactive updates automatically flow into the DOM
    * Why this combination feels framework-like without a framework
 
----
+ 
 
 ### 🧩 Documentation Style Requirements
 
@@ -112,7 +112,7 @@ For **every module, method, and example**:
 * Assume the reader knows **basic JavaScript**, but not frameworks
 * Teach like a mentor, not like an academic paper
 
----
+ 
 
 provide **Before vs After Example**
 
@@ -123,7 +123,7 @@ provide **Before vs After Example**
 * Keep examples **realistic and practical**
 * Prefer **small focused examples** over large blocks of code
 
----
+ 
 
 ### 🎯 End Goal
 
@@ -149,5 +149,5 @@ The value of Reactive + DOM Helpers Core together should be undeniable
 The documentation should feel polished, intentional, and professional
   
 
----
+ 
 

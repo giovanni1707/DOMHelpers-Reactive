@@ -141,24 +141,39 @@ userMenu:  display = 'flex'  ✓ visible
 
 ## Part 2: The Conditions System
 
-### Introducing `whenState()`
+### Three Main Methods
 
-DOM Helpers provides a powerful `Conditions.whenState()` method for declarative conditional rendering:
+DOM Helpers provides three methods for conditional rendering:
+
+1. **`Conditions.whenState()`** - Auto-reactive (when using state functions)
+2. **`Conditions.apply()`** - One-time static application
+3. **`Conditions.watch()`** - Explicit reactive watching
+
+### API Signature
 
 ```javascript
-Conditions.whenState(stateObject, 'propertyName', {
-  'condition': {
-    // What to do when condition matches
-    style: { display: 'block' }
-  },
-  'anotherCondition': {
-    // What to do for this condition
-    style: { display: 'none' }
-  }
-});
-```
+// Auto-reactive mode (recommended with state)
+Conditions.whenState(
+  () => state.property,  // Function returning value
+  { /* conditions */ },   // Condition mappings
+  '#selector',           // CSS selector
+  { reactive: true }     // Optional config
+);
 
-Let's see it in action!
+// Static one-time application
+Conditions.apply(
+  currentValue,          // Direct value
+  { /* conditions */ },   // Condition mappings
+  '#selector'            // CSS selector
+);
+
+// Explicit reactive (requires reactive library)
+Conditions.watch(
+  () => state.property,  // Function returning value
+  { /* conditions */ },   // Condition mappings
+  '#selector'            // CSS selector
+);
+```
 
 ---
 
@@ -167,42 +182,73 @@ Let's see it in action!
 ```javascript
 const status = state({ value: 'loading' });
 
-Conditions.whenState(status, 'value', {
-  'loading': {
-    '#loadingSpinner': {
-      style: { display: 'block' }
+// ✅ Correct: Use function to get state value
+Conditions.whenState(
+  () => status.value,  // Function returning current value
+  {
+    'loading': {
+      textContent: 'Loading...',
+      style: { display: 'block', color: 'blue' }
     },
-    '#content': {
-      style: { display: 'none' }
+    'ready': {
+      textContent: 'Ready!',
+      style: { display: 'block', color: 'green' }
+    },
+    'error': {
+      textContent: 'Error occurred',
+      style: { display: 'block', color: 'red' }
     }
   },
-  'ready': {
-    '#loadingSpinner': {
-      style: { display: 'none' }
-    },
-    '#content': {
-      style: { display: 'block' }
-    }
-  },
-  'error': {
-    '#loadingSpinner': {
-      style: { display: 'none' }
-    },
-    '#content': {
-      style: { display: 'none' }
-    },
-    '#errorMessage': {
-      style: { display: 'block' }
-    }
-  }
-});
+  '#statusMessage'  // Selector goes here
+);
 
 // Change state and UI updates automatically
-status.value = 'ready'; // ✨ Content shows, spinner hides
-status.value = 'error'; // ✨ Error message shows
+status.value = 'ready'; // ✨ Shows "Ready!" in green
+status.value = 'error'; // ✨ Shows "Error occurred" in red
 ```
 
 **The beauty:** One declaration handles all states!
+
+---
+
+### Using apply() for Static Values
+
+When you don't need reactivity, use `apply()`:
+
+```javascript
+const currentTheme = 'dark';
+
+Conditions.apply(
+  currentTheme,  // Direct value, not a function
+  {
+    'light': {
+      classList: { add: 'theme-light', remove: 'theme-dark' }
+    },
+    'dark': {
+      classList: { add: 'theme-dark', remove: 'theme-light' }
+    }
+  },
+  'body'
+);
+```
+
+---
+
+### Default Branch Support
+
+You can provide a default case when no conditions match:
+
+```javascript
+Conditions.whenState(
+  () => status.value,
+  {
+    'loading': { textContent: 'Loading...' },
+    'ready': { textContent: 'Ready!' },
+    default: { textContent: 'Unknown status' }  // Fallback
+  },
+  '#statusMessage'
+);
+```
 
 ---
 
@@ -213,172 +259,273 @@ The Conditions system understands many types of conditions:
 ### Boolean Conditions
 
 ```javascript
-Conditions.whenState(user, 'isActive', {
-  'true': {
-    '#status': { textContent: 'Active', style: { color: 'green' } }
+const user = state({ isActive: true });
+
+Conditions.whenState(
+  () => user.isActive,
+  {
+    'true': {
+      textContent: 'Active',
+      style: { color: 'green' }
+    },
+    'false': {
+      textContent: 'Inactive',
+      style: { color: 'gray' }
+    }
   },
-  'false': {
-    '#status': { textContent: 'Inactive', style: { color: 'gray' } }
-  }
-});
+  '#status'
+);
 ```
 
 ### Truthy/Falsy
 
 ```javascript
-Conditions.whenState(cart, 'items', {
-  'truthy': {
-    // When items array has values
-    '#cartBadge': { style: { display: 'flex' } }
+const cart = state({ items: [] });
+
+Conditions.whenState(
+  () => cart.items.length,
+  {
+    'truthy': {
+      // When items array has values
+      style: { display: 'flex' }
+    },
+    'falsy': {
+      // When items is empty
+      style: { display: 'none' }
+    }
   },
-  'falsy': {
-    // When items is empty/null/undefined
-    '#cartBadge': { style: { display: 'none' } }
-  }
-});
+  '#cartBadge'
+);
 ```
 
 ### Empty Check
 
 ```javascript
-Conditions.whenState(search, 'query', {
-  'empty': {
-    '#searchResults': { style: { display: 'none' } },
-    '#searchPlaceholder': { style: { display: 'block' } }
-  }
-});
+const search = state({ query: '' });
+
+Conditions.whenState(
+  () => search.query,
+  {
+    'empty': {
+      textContent: 'Start typing to search...',
+      style: { display: 'block' }
+    },
+    default: {
+      textContent: `Searching for: ${search.query}`,
+      style: { display: 'block' }
+    }
+  },
+  '#searchPlaceholder'
+);
 ```
 
 ### Exact String Match
 
 ```javascript
-Conditions.whenState(theme, 'mode', {
-  'light': {
-    'body': { classList: { add: 'theme-light' } }
+const theme = state({ mode: 'light' });
+
+// Light theme
+Conditions.whenState(
+  () => theme.mode,
+  {
+    'light': {
+      classList: { add: 'theme-light', remove: 'theme-dark' }
+    },
+    'dark': {
+      classList: { add: 'theme-dark', remove: 'theme-light' }
+    }
   },
-  'dark': {
-    'body': { classList: { add: 'theme-dark' } }
-  },
-  'system': {
-    'body': { classList: { add: 'theme-system' } }
-  }
-});
+  'body'
+);
 ```
 
 ### Numeric Comparisons
 
 ```javascript
-Conditions.whenState(battery, 'level', {
-  '>=80': {
-    '#batteryIcon': { textContent: '🔋', style: { color: 'green' } }
+const battery = state({ level: 100 });
+
+Conditions.whenState(
+  () => battery.level,
+  {
+    '>=80': {
+      textContent: '🔋',
+      style: { color: 'green' }
+    },
+    '>=40': {
+      textContent: '🔋',
+      style: { color: 'orange' }
+    },
+    '<40': {
+      textContent: '🪫',
+      style: { color: 'red' }
+    }
   },
-  '>=40': {
-    '#batteryIcon': { textContent: '🔋', style: { color: 'orange' } }
-  },
-  '<40': {
-    '#batteryIcon': { textContent: '🪫', style: { color: 'red' } }
-  }
-});
+  '#batteryIcon'
+);
 ```
 
 ### Numeric Ranges
 
 ```javascript
-Conditions.whenState(score, 'value', {
-  '0-49': {
-    '#grade': { textContent: 'F', style: { color: 'red' } }
+const score = state({ value: 0 });
+
+Conditions.whenState(
+  () => score.value,
+  {
+    '0-49': {
+      textContent: 'F',
+      style: { color: 'red' }
+    },
+    '50-69': {
+      textContent: 'C',
+      style: { color: 'orange' }
+    },
+    '70-89': {
+      textContent: 'B',
+      style: { color: 'blue' }
+    },
+    '90-100': {
+      textContent: 'A',
+      style: { color: 'green' }
+    }
   },
-  '50-69': {
-    '#grade': { textContent: 'C', style: { color: 'orange' } }
-  },
-  '70-89': {
-    '#grade': { textContent: 'B', style: { color: 'blue' } }
-  },
-  '90-100': {
-    '#grade': { textContent: 'A', style: { color: 'green' } }
-  }
-});
+  '#grade'
+);
 ```
 
 ### String Pattern Matching
 
 ```javascript
-Conditions.whenState(file, 'name', {
-  'endsWith:.pdf': {
-    '#icon': { textContent: '📄' }
+const file = state({ name: 'document.pdf' });
+
+Conditions.whenState(
+  () => file.name,
+  {
+    'endsWith:.pdf': {
+      textContent: '📄'
+    },
+    'endsWith:.jpg': {
+      textContent: '🖼️'
+    },
+    'endsWith:.mp3': {
+      textContent: '🎵'
+    },
+    'includes:backup': {
+      innerHTML: '📄 <span class="badge">Backup</span>'
+    }
   },
-  'endsWith:.jpg': {
-    '#icon': { textContent: '🖼️' }
-  },
-  'endsWith:.mp3': {
-    '#icon': { textContent: '🎵' }
-  },
-  'includes:backup': {
-    '#badge': { textContent: 'Backup', style: { display: 'inline' } }
-  }
-});
+  '#fileIcon'
+);
 ```
 
 ---
 
-## Part 4: Combining Reactive + Conditions
+## Part 4: Working with Multiple Elements
 
-### The Power Combo
+### Applying to Multiple Elements at Once
 
-Here's where it gets magical — using reactive state with the Conditions system:
+When your selector matches multiple elements, conditions apply to ALL of them:
 
 ```javascript
-const app = state({
-  page: 'home',
-  user: null,
-  notifications: 0
-});
+const status = state({ value: 'active' });
 
-// Page-based content
-Conditions.whenState(app, 'page', {
-  'home': {
-    '#homePage': { style: { display: 'block' } },
-    '#aboutPage': { style: { display: 'none' } },
-    '#contactPage': { style: { display: 'none' } }
-  },
-  'about': {
-    '#homePage': { style: { display: 'none' } },
-    '#aboutPage': { style: { display: 'block' } },
-    '#contactPage': { style: { display: 'none' } }
-  },
-  'contact': {
-    '#homePage': { style: { display: 'none' } },
-    '#aboutPage': { style: { display: 'none' } },
-    '#contactPage': { style: { display: 'block' } }
-  }
-});
-
-// Notification badge
-Conditions.whenState(app, 'notifications', {
-  '0': {
-    '#notifBadge': { style: { display: 'none' } }
-  },
-  '>0': {
-    '#notifBadge': {
-      style: { display: 'flex' },
-      textContent: app.notifications
+// All .status-indicator elements will update
+Conditions.whenState(
+  () => status.value,
+  {
+    'active': {
+      textContent: '●',
+      style: { color: 'green' }
+    },
+    'inactive': {
+      textContent: '○',
+      style: { color: 'gray' }
     }
-  }
-});
+  },
+  '.status-indicator'  // All elements with this class
+);
+```
 
-// Navigate by just changing state
-Elements.homeLink.addEventListener('click', () => {
-  app.page = 'home';
-});
+### Array Distribution (Advanced)
 
-Elements.aboutLink.addEventListener('click', () => {
-  app.page = 'about';
+You can distribute different values to different elements using arrays:
+
+```javascript
+Conditions.apply(
+  'active',
+  {
+    'active': {
+      textContent: ['First', 'Second', 'Third'],
+      style: {
+        color: ['red', 'blue', 'green']
+      }
+    }
+  },
+  '.items'  // If 3 elements match, they get different values
+);
+```
+
+**How it works:**
+- First `.items` element gets: `textContent = 'First'`, `color = 'red'`
+- Second `.items` element gets: `textContent = 'Second'`, `color = 'blue'`
+- Third `.items` element gets: `textContent = 'Third'`, `color = 'green'`
+
+---
+
+## Part 5: Batch Operations
+
+### Updating Multiple States at Once
+
+```javascript
+// Using batch for better performance
+Conditions.batch(() => {
+  Conditions.apply(status.value, statusConditions, '#status');
+  Conditions.apply(user.role, roleConditions, '#userRole');
+  Conditions.apply(theme.mode, themeConditions, 'body');
 });
+```
+
+### Batch Multiple whenState Calls
+
+For multiple reactive conditions:
+
+```javascript
+const cleanup = Conditions.whenStates([
+  [() => status.value, statusConditions, '#status'],
+  [() => user.role, roleConditions, '#userRole'],
+  [() => theme.mode, themeConditions, 'body']
+]);
+
+// Later, cleanup all watchers:
+cleanup.destroy();
 ```
 
 ---
 
-## Part 5: Practical Patterns
+## Part 6: Global Shortcuts
+
+If you load the shortcuts extension, you can use shorter names:
+
+```javascript
+// Instead of Conditions.whenState()
+whenState(() => status.value, conditions, '#status');
+
+// Instead of Conditions.apply()
+whenApply(currentValue, conditions, '#status');
+
+// Instead of Conditions.watch()
+whenWatch(() => status.value, conditions, '#status');
+
+// Batch version
+whenStates([
+  [() => status.value, statusConditions, '#status'],
+  [() => user.role, roleConditions, '#userRole']
+]);
+```
+
+---
+
+## Part 7: Practical Patterns
 
 ### Pattern 1: Loading States
 
@@ -391,32 +538,41 @@ const dataLoader = state({
   error: null
 });
 
-Conditions.whenState(dataLoader, 'status', {
-  'idle': {
-    '#loader': { style: { display: 'none' } },
-    '#content': { style: { display: 'none' } },
-    '#error': { style: { display: 'none' } },
-    '#placeholder': { style: { display: 'block' } }
+// Loader visibility
+Conditions.whenState(
+  () => dataLoader.status,
+  {
+    'idle': { style: { display: 'none' } },
+    'loading': { style: { display: 'flex' } },
+    'success': { style: { display: 'none' } },
+    'error': { style: { display: 'none' } }
   },
-  'loading': {
-    '#loader': { style: { display: 'flex' } },
-    '#content': { style: { display: 'none' } },
-    '#error': { style: { display: 'none' } },
-    '#placeholder': { style: { display: 'none' } }
+  '#loader'
+);
+
+// Content visibility
+Conditions.whenState(
+  () => dataLoader.status,
+  {
+    'idle': { style: { display: 'none' } },
+    'loading': { style: { display: 'none' } },
+    'success': { style: { display: 'block' } },
+    'error': { style: { display: 'none' } }
   },
-  'success': {
-    '#loader': { style: { display: 'none' } },
-    '#content': { style: { display: 'block' } },
-    '#error': { style: { display: 'none' } },
-    '#placeholder': { style: { display: 'none' } }
+  '#content'
+);
+
+// Error visibility
+Conditions.whenState(
+  () => dataLoader.status,
+  {
+    'idle': { style: { display: 'none' } },
+    'loading': { style: { display: 'none' } },
+    'success': { style: { display: 'none' } },
+    'error': { style: { display: 'block' } }
   },
-  'error': {
-    '#loader': { style: { display: 'none' } },
-    '#content': { style: { display: 'none' } },
-    '#error': { style: { display: 'block' } },
-    '#placeholder': { style: { display: 'none' } }
-  }
-});
+  '#error'
+);
 
 // Fetch data
 async function loadData() {
@@ -454,35 +610,41 @@ effect(() => {
   }
 });
 
-// Visual feedback
-Conditions.whenState(form, 'emailStatus', {
-  'empty': {
-    '#emailInput': {
+// Input styling
+Conditions.whenState(
+  () => form.emailStatus,
+  {
+    'empty': {
       classList: { remove: ['valid', 'invalid'] }
     },
-    '#emailFeedback': {
-      style: { display: 'none' }
-    }
-  },
-  'valid': {
-    '#emailInput': {
+    'valid': {
       classList: { add: 'valid', remove: 'invalid' }
     },
-    '#emailFeedback': {
-      style: { display: 'block', color: 'green' },
-      textContent: '✓ Valid email'
+    'invalid': {
+      classList: { add: 'invalid', remove: 'valid' }
     }
   },
-  'invalid': {
-    '#emailInput': {
-      classList: { add: 'invalid', remove: 'valid' }
+  '#emailInput'
+);
+
+// Feedback message
+Conditions.whenState(
+  () => form.emailStatus,
+  {
+    'empty': {
+      style: { display: 'none' }
     },
-    '#emailFeedback': {
+    'valid': {
+      style: { display: 'block', color: 'green' },
+      textContent: '✓ Valid email'
+    },
+    'invalid': {
       style: { display: 'block', color: 'red' },
       textContent: '✗ Please enter a valid email'
     }
-  }
-});
+  },
+  '#emailFeedback'
+);
 ```
 
 ---
@@ -496,40 +658,22 @@ const wizard = state({
 });
 
 // Show correct step content
-Conditions.whenState(wizard, 'step', {
-  '1': {
-    '#step1': { style: { display: 'block' } },
-    '#step2': { style: { display: 'none' } },
-    '#step3': { style: { display: 'none' } },
-    '#step4': { style: { display: 'none' } }
-  },
-  '2': {
-    '#step1': { style: { display: 'none' } },
-    '#step2': { style: { display: 'block' } },
-    '#step3': { style: { display: 'none' } },
-    '#step4': { style: { display: 'none' } }
-  },
-  '3': {
-    '#step1': { style: { display: 'none' } },
-    '#step2': { style: { display: 'none' } },
-    '#step3': { style: { display: 'block' } },
-    '#step4': { style: { display: 'none' } }
-  },
-  '4': {
-    '#step1': { style: { display: 'none' } },
-    '#step2': { style: { display: 'none' } },
-    '#step3': { style: { display: 'none' } },
-    '#step4': { style: { display: 'block' } }
-  }
-});
+for (let i = 1; i <= wizard.maxSteps; i++) {
+  Conditions.whenState(
+    () => wizard.step,
+    {
+      [`${i}`]: { style: { display: 'block' } },
+      default: { style: { display: 'none' } }
+    },
+    `#step${i}`
+  );
+}
 
 // Update navigation buttons
 effect(() => {
   Elements.prevBtn.disabled = wizard.step === 1;
   Elements.nextBtn.disabled = wizard.step === wizard.maxSteps;
-
-  Elements.nextBtn.textContent =
-    wizard.step === wizard.maxSteps ? 'Finish' : 'Next';
+  Elements.nextBtn.textContent = wizard.step === wizard.maxSteps ? 'Finish' : 'Next';
 });
 
 // Progress indicator
@@ -551,85 +695,66 @@ Elements.nextBtn.addEventListener('click', () => {
 
 ---
 
-### Pattern 4: Accordion/Collapsible
-
-```javascript
-const accordion = state({
-  openSection: null // null means all closed
-});
-
-// Toggle sections
-function toggleSection(sectionId) {
-  if (accordion.openSection === sectionId) {
-    accordion.openSection = null; // Close if already open
-  } else {
-    accordion.openSection = sectionId; // Open this one
-  }
-}
-
-// Update visibility
-effect(() => {
-  // Get all accordion sections
-  Collections.ClassName.accordionContent.forEach((content, index) => {
-    const sectionId = `section${index + 1}`;
-    const isOpen = accordion.openSection === sectionId;
-
-    content.style.display = isOpen ? 'block' : 'none';
-    content.style.maxHeight = isOpen ? '500px' : '0';
-  });
-
-  // Update toggle icons
-  Collections.ClassName.accordionToggle.forEach((toggle, index) => {
-    const sectionId = `section${index + 1}`;
-    const isOpen = accordion.openSection === sectionId;
-
-    toggle.textContent = isOpen ? '−' : '+';
-    toggle.parentElement.classList.toggle('active', isOpen);
-  });
-});
-
-// Attach click handlers
-Collections.ClassName.accordionHeader.forEach((header, index) => {
-  header.addEventListener('click', () => {
-    toggleSection(`section${index + 1}`);
-  });
-});
-```
-
----
-
-### Pattern 5: Tab Interface
+### Pattern 4: Tab Interface
 
 ```javascript
 const tabs = state({ activeTab: 'overview' });
 
-// Tab content visibility
-Conditions.whenState(tabs, 'activeTab', {
-  'overview': {
-    '#overviewTab': { classList: { add: 'active' } },
-    '#featuresTab': { classList: { remove: 'active' } },
-    '#pricingTab': { classList: { remove: 'active' } },
-    '#overviewPanel': { style: { display: 'block' } },
-    '#featuresPanel': { style: { display: 'none' } },
-    '#pricingPanel': { style: { display: 'none' } }
+// Tab highlighting
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'overview': { classList: { add: 'active' } },
+    default: { classList: { remove: 'active' } }
   },
-  'features': {
-    '#overviewTab': { classList: { remove: 'active' } },
-    '#featuresTab': { classList: { add: 'active' } },
-    '#pricingTab': { classList: { remove: 'active' } },
-    '#overviewPanel': { style: { display: 'none' } },
-    '#featuresPanel': { style: { display: 'block' } },
-    '#pricingPanel': { style: { display: 'none' } }
+  '#overviewTab'
+);
+
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'features': { classList: { add: 'active' } },
+    default: { classList: { remove: 'active' } }
   },
-  'pricing': {
-    '#overviewTab': { classList: { remove: 'active' } },
-    '#featuresTab': { classList: { remove: 'active' } },
-    '#pricingTab': { classList: { add: 'active' } },
-    '#overviewPanel': { style: { display: 'none' } },
-    '#featuresPanel': { style: { display: 'none' } },
-    '#pricingPanel': { style: { display: 'block' } }
-  }
-});
+  '#featuresTab'
+);
+
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'pricing': { classList: { add: 'active' } },
+    default: { classList: { remove: 'active' } }
+  },
+  '#pricingTab'
+);
+
+// Panel visibility
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'overview': { style: { display: 'block' } },
+    default: { style: { display: 'none' } }
+  },
+  '#overviewPanel'
+);
+
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'features': { style: { display: 'block' } },
+    default: { style: { display: 'none' } }
+  },
+  '#featuresPanel'
+);
+
+Conditions.whenState(
+  () => tabs.activeTab,
+  {
+    'pricing': { style: { display: 'block' } },
+    default: { style: { display: 'none' } }
+  },
+  '#pricingPanel'
+);
 
 // Tab click handlers
 Elements.overviewTab.addEventListener('click', () => tabs.activeTab = 'overview');
@@ -639,75 +764,64 @@ Elements.pricingTab.addEventListener('click', () => tabs.activeTab = 'pricing');
 
 ---
 
-## Part 6: Combining Effects with Conditions
+## Part 8: Cleanup and Memory Management
 
-### When to Use Each
+### Destroying Watchers
 
-| Use This | When You Need |
-|----------|---------------|
-| `effect()` alone | Simple show/hide based on boolean |
-| `Conditions.whenState()` | Multiple states with different UI |
-| Both together | Complex logic + declarative conditions |
-
-### Combined Example
+When using reactive conditions, always cleanup when done:
 
 ```javascript
-const player = state({
-  status: 'stopped', // stopped, playing, paused
-  volume: 50,
-  currentTrack: null
-});
+// Create a watcher
+const cleanup = Conditions.whenState(
+  () => status.value,
+  conditions,
+  '#element'
+);
 
-// Use Conditions for status-based UI
-Conditions.whenState(player, 'status', {
-  'stopped': {
-    '#playBtn': { style: { display: 'inline-flex' } },
-    '#pauseBtn': { style: { display: 'none' } },
-    '#stopBtn': { style: { display: 'none' } },
-    '#progress': { style: { display: 'none' } }
-  },
-  'playing': {
-    '#playBtn': { style: { display: 'none' } },
-    '#pauseBtn': { style: { display: 'inline-flex' } },
-    '#stopBtn': { style: { display: 'inline-flex' } },
-    '#progress': { style: { display: 'block' } }
-  },
-  'paused': {
-    '#playBtn': { style: { display: 'inline-flex' } },
-    '#pauseBtn': { style: { display: 'none' } },
-    '#stopBtn': { style: { display: 'inline-flex' } },
-    '#progress': { style: { display: 'block' } }
-  }
-});
+// Later, when component is removed:
+cleanup.destroy();  // Stops watching and removes event listeners
+```
 
-// Use effect for volume (continuous value)
-effect(() => {
-  Elements.volumeSlider.value = player.volume;
-  Elements.volumeDisplay.textContent = `${player.volume}%`;
+### Batch Cleanup
 
-  // Mute icon based on volume
-  if (player.volume === 0) {
-    Elements.volumeIcon.textContent = '🔇';
-  } else if (player.volume < 50) {
-    Elements.volumeIcon.textContent = '🔉';
-  } else {
-    Elements.volumeIcon.textContent = '🔊';
-  }
-});
+```javascript
+const cleanup = Conditions.whenStates([
+  [() => status.value, statusConditions, '#status'],
+  [() => user.role, roleConditions, '#userRole']
+]);
 
-// Use effect for track info
-effect(() => {
-  if (player.currentTrack) {
-    Elements.trackTitle.textContent = player.currentTrack.title;
-    Elements.trackArtist.textContent = player.currentTrack.artist;
-    Elements.trackCover.src = player.currentTrack.cover;
-  }
-});
+// Cleanup all at once
+cleanup.destroy();
 ```
 
 ---
 
 ## Quick Reference Card
+
+### Three Main Methods
+
+```javascript
+// 1. Auto-reactive (recommended)
+Conditions.whenState(
+  () => state.value,     // Function
+  { /* conditions */ },
+  '#selector'
+);
+
+// 2. Static one-time
+Conditions.apply(
+  currentValue,          // Direct value
+  { /* conditions */ },
+  '#selector'
+);
+
+// 3. Explicit reactive
+Conditions.watch(
+  () => state.value,     // Function
+  { /* conditions */ },
+  '#selector'
+);
+```
 
 ### Condition Types
 
@@ -739,13 +853,16 @@ effect(() => {
 'includes:text'    // Contains substring
 'startsWith:pre'   // Starts with prefix
 'endsWith:suf'     // Ends with suffix
+
+// Default
+default          // Fallback when nothing matches
 ```
 
 ### Property Updates
 
 ```javascript
 {
-  '#selector': {
+  'condition': {
     textContent: 'Text',
     innerHTML: '<b>HTML</b>',
     style: { property: 'value' },
@@ -760,6 +877,19 @@ effect(() => {
 
 ## Best Practices
 
+### 📌 Use Functions for Reactive Values
+
+```javascript
+// ✅ Good: Function returns reactive value
+Conditions.whenState(() => status.value, conditions, '#element');
+
+// ❌ Bad: Direct value won't update
+Conditions.whenState(status.value, conditions, '#element');
+
+// ✅ For static values, use apply()
+Conditions.apply(status.value, conditions, '#element');
+```
+
 ### 📌 Use Meaningful State Values
 
 ```javascript
@@ -770,29 +900,27 @@ const page = state({ status: 'loading' }); // loading, ready, error
 const page = state({ status: 1 }); // What does 1 mean?
 ```
 
-### 📌 Group Related Conditions
+### 📌 Always Cleanup Reactive Watchers
 
 ```javascript
-// ✅ Good: All states in one whenState
-Conditions.whenState(app, 'mode', {
-  'light': { /* ... */ },
-  'dark': { /* ... */ },
-  'system': { /* ... */ }
-});
+// ✅ Good: Store and cleanup
+const cleanup = Conditions.whenState(...);
+// Later:
+cleanup.destroy();
 
-// ❌ Less ideal: Separate for each
-if (app.mode === 'light') { /* ... */ }
-if (app.mode === 'dark') { /* ... */ }
+// ❌ Bad: No cleanup (memory leak)
+Conditions.whenState(...); // Lost reference!
 ```
 
-### 📌 Keep UI State in State
+### 📌 Use Default Branch for Safety
 
 ```javascript
-// ✅ Good: UI state in reactive state
-const modal = state({ isOpen: false });
-
-// ❌ Bad: UI state scattered
-let isModalOpen = false; // Not reactive!
+// ✅ Good: Has fallback
+Conditions.whenState(() => status.value, {
+  'loading': { /* ... */ },
+  'ready': { /* ... */ },
+  default: { textContent: 'Unknown' }
+}, '#status');
 ```
 
 ---
@@ -801,10 +929,46 @@ let isModalOpen = false; // Not reactive!
 
 | Concept | What It Does |
 |---------|--------------|
-| Show/Hide with effects | Basic conditional display |
-| `Conditions.whenState()` | Declarative multi-state rendering |
+| `Conditions.whenState()` | Auto-reactive conditional rendering |
+| `Conditions.apply()` | One-time static application |
+| `Conditions.watch()` | Explicit reactive watching |
 | Condition matchers | Boolean, numeric, string patterns |
-| Combined patterns | Effects + Conditions together |
+| Default branch | Fallback when no match |
+| Cleanup | Prevent memory leaks |
+
+---
+
+## Common Mistakes to Avoid
+
+### ❌ Wrong: Passing state object directly
+```javascript
+Conditions.whenState(status, 'value', { ... }); // DOESN'T WORK
+```
+
+### ✅ Right: Pass a function
+```javascript
+Conditions.whenState(() => status.value, { ... }, '#element');
+```
+
+---
+
+### ❌ Wrong: Selector inside conditions
+```javascript
+Conditions.whenState(() => status.value, {
+  'loading': {
+    '#element': { textContent: 'Loading' }  // Wrong!
+  }
+}, ...);
+```
+
+### ✅ Right: Selector as third argument
+```javascript
+Conditions.whenState(() => status.value, {
+  'loading': {
+    textContent: 'Loading'  // Correct!
+  }
+}, '#element');
+```
 
 ---
 
@@ -818,7 +982,7 @@ Build a **notification center** with:
 4. Filter tabs switch between all/unread/read
 5. Mark as read changes the styling
 
-Use conditions for filter states and effects for dynamic content!
+Use `whenState()` for filter states and effects for dynamic content!
 
 ---
 

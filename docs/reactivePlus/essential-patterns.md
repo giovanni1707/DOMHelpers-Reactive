@@ -15,7 +15,7 @@ Master these patterns, and you can build:
 
 Let's dive in.
 
----
+ 
 
 ## Pattern 1: State → DOM Updates
 
@@ -48,7 +48,7 @@ user.name = 'Alex Johnson'; // userName element updates instantly
 3. When `user.name` changes, effect runs again
 4. DOM updates automatically
 
----
+ 
 
 #### Multiple Properties, Single Element
 
@@ -72,7 +72,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Bulk Property Updaters: Multiple Elements, Same Property
 
@@ -115,7 +115,7 @@ effect(() => {
 - ✅ Clear intent: "Update text for these elements"
 - ✅ One operation instead of four
 
----
+ 
 
 #### Example: Update Multiple Styles
 
@@ -136,7 +136,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### When to Use `effect()` vs `whenState()`
 
@@ -162,7 +162,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 #### Use `whenState()` when:
 ✅ You have **clear state branches** (loading/success/error, active/inactive, etc.)  
@@ -195,7 +195,7 @@ whenState(
 );
 ```
 
----
+ 
 
 #### Quick Decision Guide
 
@@ -210,7 +210,7 @@ whenState(
 
 **Rule of thumb:** If you'd write an if-else chain, use `whenState()`. Otherwise, use `effect()`.
 
----
+ 
 
 ## Pattern 2: Form Input Binding
 
@@ -246,7 +246,7 @@ effect(() => {
 
 **Wait, why update input from state?** Because state might change from other sources (reset button, API data, etc.).
 
----
+ 
 
 #### Checkbox Binding
 
@@ -267,7 +267,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 #### Select/Dropdown Binding
 
@@ -287,7 +287,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Input Validation Patterns
 
@@ -357,7 +357,7 @@ whenState(
 - ✅ Declarative error display with `whenState()`
 - ✅ Submit button state managed automatically
 
----
+ 
 
 #### Validation on Blur (Touch-based)
 
@@ -398,7 +398,7 @@ whenState(
 );
 ```
 
----
+ 
 
 ### Complete Form State Management
 
@@ -533,7 +533,7 @@ Elements.loginForm.addEventListener('submit', async (e) => {
 - ✅ Loading states
 - ✅ Error handling
 
----
+ 
 
 ## Pattern 3: Collections & Lists
 
@@ -570,7 +570,7 @@ effect(() => {
 
 **Note:** This recreates the entire list on every change. For small lists, this is fine. For large lists, see the performance section.
 
----
+ 
 
 ### Array Distribution to Collections
 
@@ -621,7 +621,7 @@ effect(() => {
 - ✅ Array automatically distributes: element[0] gets 'Users', element[1] gets 'Revenue', etc.
 - ✅ No manual loops needed!
 
----
+ 
 
 #### Multiple Properties with Array Distribution
 
@@ -648,7 +648,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Dynamic List Updates (Add/Remove Items)
 
@@ -686,7 +686,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 #### Removing Items
 
@@ -708,7 +708,7 @@ Elements.todoList.addEventListener('click', (e) => {
 });
 ```
 
----
+ 
 
 #### Updating Items
 
@@ -730,7 +730,7 @@ Elements.todoList.addEventListener('click', (e) => {
 });
 ```
 
----
+ 
 
 #### Complete CRUD List Example
 
@@ -830,7 +830,7 @@ ClassName['filter-btn'].forEach((btn, index) => {
 });
 ```
 
----
+ 
 
 ## Pattern 4: Conditional Rendering
 
@@ -861,7 +861,7 @@ Elements.menuToggle.addEventListener('click', () => {
 });
 ```
 
----
+ 
 
 #### Multiple Elements Based on One State
 
@@ -901,7 +901,7 @@ whenState(
 );
 ```
 
----
+ 
 
 ### Multiple State Branches
 
@@ -942,7 +942,7 @@ whenState(
 );
 ```
 
----
+ 
 
 #### Status-Based UI Sections
 
@@ -992,7 +992,7 @@ whenState(
 );
 ```
 
----
+ 
 
 ### Default Fallbacks
 
@@ -1029,7 +1029,7 @@ whenState(
 
 **The `default` branch catches any value not explicitly defined.**
 
----
+ 
 
 ### Complex Conditional Logic
 
@@ -1091,7 +1091,7 @@ whenState(
 
 **Key technique:** Use computed properties to combine multiple state values into clear boolean flags.
 
----
+ 
 
 ## Pattern 5: Computed Values
 
@@ -1128,7 +1128,7 @@ effect(() => {
 order.subtotal = 100; // tax becomes 10, total becomes 110
 ```
 
----
+ 
 
 ### Chaining Computed Properties
 
@@ -1194,7 +1194,7 @@ effect(() => {
 - ✅ No manual recalculation needed
 - ✅ Business logic centralized in computed properties
 
----
+ 
 
 ### Performance Considerations
 
@@ -1222,7 +1222,7 @@ effect(() => {
 
 **Computed properties are cached.** They only recalculate when their dependencies change.
 
----
+ 
 
 #### Bad: Calculating in Effects
 
@@ -1259,7 +1259,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 #### When to Use Computed vs Effects
 
@@ -1272,7 +1272,7 @@ effect(() => {
 
 **Rule:** If it's a **value derived from state**, use computed. If it's a **side effect**, use effect.
 
----
+ 
 
 ## Summary: The Essential Patterns
 
@@ -1304,7 +1304,7 @@ You've learned the **5 core patterns** that cover 90% of use cases:
 - Chaining computed properties
 - Performance through caching
 
----
+ 
 
 ## Quick Reference: Pattern Cheat Sheet
 
@@ -1358,7 +1358,7 @@ computed(cart, {
 });
 ```
 
----
+ 
 
 ## What's Next?
 

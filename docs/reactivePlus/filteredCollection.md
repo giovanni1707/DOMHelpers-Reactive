@@ -25,7 +25,7 @@ console.log(activeTodos.items.length); // 1 (auto-updated!)
 
 **That's it.** Create a filtered view of a collection that automatically updates when the source collection changes.
 
----
+ 
 
 ## What is `filteredCollection()`?
 
@@ -35,7 +35,7 @@ Think of it as **a live filter or view in a database** — you define the filter
 
 **In practical terms:** Instead of manually filtering arrays and keeping views in sync, you create a filtered collection that automatically reflects changes to the source.
 
----
+ 
 
 ## Syntax
 
@@ -72,7 +72,7 @@ const completedTodos = filteredCollection(
 
 **Important:** Filtered collections are **read-only views**. Modify the source collection to change the data.
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -163,7 +163,7 @@ allTodos.items[0].done = true;
 ✅ **Clean code** - Define filter once, stays in sync
 ✅ **Read-only safety** - Views can't accidentally modify source
 
----
+ 
 
 ## Basic Usage
 
@@ -201,7 +201,7 @@ todos.items[0].done = true;
 // ✨ activeTodos and completedTodos both update
 ```
 
----
+ 
 
 ### Example 2: Product Filter by Category
 
@@ -231,7 +231,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 3: Priority Task Filter
 
@@ -263,7 +263,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 4: Search Results
 
@@ -301,7 +301,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 5: Price Range Filter
 
@@ -334,7 +334,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Key Differences from Manual Filtering
 
@@ -350,7 +350,7 @@ const active = filteredCollection(todos, t => !t.done);
 // ✅ Live view - auto-updates when todos change
 ```
 
----
+ 
 
 ## Common Patterns
 
@@ -383,7 +383,7 @@ const highPriorityActive = filteredCollection(active, t => t.priority === 'high'
 // ✨ Changes to 'all' flow through both filters
 ```
 
----
+ 
 
 ## Key Takeaways
 
@@ -393,7 +393,7 @@ const highPriorityActive = filteredCollection(active, t => t.priority === 'high'
 ✅ **Reactive** - Works with effects and bindings
 ✅ **Efficient** - Only recalculates when source changes
 
----
+ 
 
 ## What's Next?
 
@@ -401,7 +401,7 @@ const highPriorityActive = filteredCollection(active, t => t.priority === 'high'
 - **`computedCollection()`** - Collections with computed properties
 - **`effect()`** - React to filtered collection changes
 
----
+ 
 
 ## Summary
 

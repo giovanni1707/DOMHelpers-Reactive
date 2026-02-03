@@ -28,7 +28,7 @@ console.log(products.totalValue);    // 2380 (auto-updated!)
 
 **That's it.** Create collections with computed properties that automatically recalculate when the collection changes.
 
----
+ 
 
 ## What is `computedCollection()`?
 
@@ -38,7 +38,7 @@ Think of it as **a smart spreadsheet** — you define formulas (computed propert
 
 **In practical terms:** Instead of manually calculating totals, averages, or filtered counts, you define them once as computed properties and they stay in sync automatically.
 
----
+ 
 
 ## Syntax
 
@@ -78,7 +78,7 @@ console.log(cart.total); // Automatically calculated
 **Returns:**
 - Reactive collection with all `createCollection()` methods plus computed properties
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -164,7 +164,7 @@ cart.add({ name: 'Keyboard', price: 79, qty: 1 });
 ✅ **Clean code** - Define calculations once
 ✅ **No manual sync** - Effects run automatically
 
----
+ 
 
 ## Basic Usage
 
@@ -205,7 +205,7 @@ cart.add({ name: 'Mouse', price: 29, qty: 2 });
 // ✨ All totals update automatically
 ```
 
----
+ 
 
 ### Example 2: Todo List with Stats
 
@@ -245,7 +245,7 @@ todos.add({ text: 'Walk dog', done: true });
 // ✨ Stats update automatically
 ```
 
----
+ 
 
 ### Example 3: Product Inventory
 
@@ -288,7 +288,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Key Takeaways
 
@@ -298,7 +298,7 @@ effect(() => {
 ✅ **All collection methods** - Includes all `createCollection()` features
 ✅ **Reactive** - Works with effects and bindings
 
----
+ 
 
 ## What's Next?
 
@@ -306,7 +306,7 @@ effect(() => {
 - **`filteredCollection()`** - Filtered views of collections
 - **`computed()`** - Add computed properties to any state
 
----
+ 
 
 ## Summary
 

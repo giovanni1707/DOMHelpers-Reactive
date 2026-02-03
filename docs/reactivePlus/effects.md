@@ -31,7 +31,7 @@ stopAll();
 
 **That's it.** Define multiple effects in one call, get a single cleanup function to stop them all.
 
----
+ 
 
 ## What is `effects()`?
 
@@ -41,7 +41,7 @@ Think of it as **setting up multiple automated systems at once**. Instead of con
 
 **In practical terms:** When you have multiple related effects, `effects()` keeps them organized and makes cleanup simple.
 
----
+ 
 
 ## Syntax
 
@@ -69,7 +69,7 @@ stopAllEffects();
 **Returns:**
 - A cleanup function that stops ALL effects when called
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -148,7 +148,7 @@ stopAll();
 ✅ Easier component lifecycle management
 ✅ Cleaner initialization code
 
----
+ 
 
 ## Mental Model: The Control Panel
 
@@ -192,7 +192,7 @@ Think of `effects()` like **a control panel with multiple switches**:
 
 **Key Insight:** `effects()` groups related effects under one master control.
 
----
+ 
 
 ## How Does It Work?
 
@@ -234,7 +234,7 @@ function effects(definitions) {
 - Each effect tracks its own dependencies
 - The returned function stops ALL effects
 
----
+ 
 
 ## Basic Usage
 
@@ -264,7 +264,7 @@ userCard.name = 'Bob';     // ✨ Only displayName runs
 userCard.status = 'away';  // ✨ Only displayStatus runs
 ```
 
----
+ 
 
 ### Example 2: Dashboard Widgets
 
@@ -295,7 +295,7 @@ const stopDashboard = effects({
 });
 ```
 
----
+ 
 
 ### Example 3: Form State Management
 
@@ -324,7 +324,7 @@ const stopFormEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 4: Theme and Layout Effects
 
@@ -350,7 +350,7 @@ const stopUIEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 5: Cleanup on Component Unmount
 
@@ -403,7 +403,7 @@ const profile = createUserProfile(123);
 profile.destroy(); // Stops all effects at once
 ```
 
----
+ 
 
 ## Effects with DOM Helpers
 
@@ -448,7 +448,7 @@ const stopProductEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 2: Collections Integration
 
@@ -478,7 +478,7 @@ const stopNotificationEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 3: Mixed DOM Helpers
 
@@ -515,7 +515,7 @@ const stopNavEffects = effects({
 });
 ```
 
----
+ 
 
 ## Real-World Examples
 
@@ -569,7 +569,7 @@ const stopProductPage = effects({
 });
 ```
 
----
+ 
 
 ### Example 2: Real-Time Chat Interface
 
@@ -637,7 +637,7 @@ const stopChatEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 3: Settings Panel
 
@@ -684,7 +684,7 @@ const stopSettingsEffects = effects({
 });
 ```
 
----
+ 
 
 ### Example 4: Data Table with Filters
 
@@ -751,7 +751,7 @@ const stopTableEffects = effects({
 });
 ```
 
----
+ 
 
 ## Common Patterns
 
@@ -774,7 +774,7 @@ function createComponent(initialState) {
 }
 ```
 
----
+ 
 
 ### Pattern 2: Feature Modules
 
@@ -803,7 +803,7 @@ function shutdown() {
 }
 ```
 
----
+ 
 
 ### Pattern 3: Conditional Effect Groups
 
@@ -832,7 +832,7 @@ function initializeMode(mode) {
 }
 ```
 
----
+ 
 
 ### Pattern 4: Debug Logging
 
@@ -856,7 +856,7 @@ const stopEffects = effects({
 });
 ```
 
----
+ 
 
 ## Important Notes
 
@@ -877,7 +877,7 @@ effects({
 // "Third effect"
 ```
 
----
+ 
 
 ### 2. Each Effect Tracks Its Own Dependencies
 
@@ -894,7 +894,7 @@ data.a = 10; // Only "A: 10" logged
 data.b = 20; // Only "B: 20" logged
 ```
 
----
+ 
 
 ### 3. Single Cleanup Stops All
 
@@ -914,7 +914,7 @@ stopAll(); // Stops ALL effects
 data.value = 2; // Nothing logged
 ```
 
----
+ 
 
 ### 4. Names Are for Documentation Only
 
@@ -931,7 +931,7 @@ effects({
 });
 ```
 
----
+ 
 
 ## Summary
 

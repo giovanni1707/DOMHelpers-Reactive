@@ -35,7 +35,7 @@ Access elements by their ID with automatic caching and the `.update()` method.
 - `Elements.destroy()` - Destroy helper
 - `Elements.configure(options)` - Configure helper
 
----
+ 
 
 ### 2. **Collections Helper** (Class/Tag/Name-based access)
 Access collections of elements by class, tag name, or name attribute.
@@ -93,7 +93,7 @@ Access collections of elements by class, tag name, or name attribute.
 - `Collections.disableEnhancedSyntax()` - Disable enhanced syntax
 - `Collections.configure(options)` - Configure helper
 
----
+ 
 
 ### 3. **Selector Helper** (querySelector/querySelectorAll with caching)
 Query elements using CSS selectors with intelligent caching.
@@ -132,7 +132,7 @@ Same as Collections: `.visible()`, `.hidden()`, `.enabled()`, `.disabled()`, plu
 - `Selector.disableEnhancedSyntax()` - Disable enhanced syntax
 - `Selector.configure(options)` - Configure helper
 
----
+ 
 
 ## 4. 🔄 Universal `.update()` Method
 Available on all elements and collections.
@@ -190,7 +190,7 @@ scrollIntoView: [{ behavior: 'smooth' }]
 click: []
 ```
 
----
+ 
 
 ## 5. 🏗️ createElement Enhancement
 
@@ -221,7 +221,7 @@ click: []
 - `DOMHelpers.enableCreateElementEnhancement()` - Enable enhancement
 - `DOMHelpers.disableCreateElementEnhancement()` - Disable enhancement
 
----
+ 
 
 ## 6. 🌐 DOMHelpers Global Object
 
@@ -241,7 +241,7 @@ click: []
 - `DOMHelpers.enableCreateElementEnhancement()` - Enable createElement
 - `DOMHelpers.disableCreateElementEnhancement()` - Disable createElement
 
----
+ 
 
 ## 7. 📊 Statistics & Cache Management
 
@@ -264,6 +264,6 @@ click: []
 }
 ```
 
----
+ 
 
 **Total Methods: 150+** across all helpers and utilities! 🎉

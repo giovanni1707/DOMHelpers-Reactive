@@ -32,7 +32,7 @@ console.log(cart.total); // 1195.56 ✨ (auto-updated!)
 
 **That's it.** Computed values automatically recalculate when their dependencies change. No manual updates needed.
 
----
+ 
 
 ## What is `computed()`?
 
@@ -42,7 +42,7 @@ Think of it as **a formula in a spreadsheet**. When you write `=A1+B1`, the cell
 
 **In practical terms:** Instead of manually calculating values every time you need them, you define the formula once and the system keeps it up to date.
 
----
+ 
 
 ## Syntax
 
@@ -65,7 +65,7 @@ console.log(state.propertyName);
 **Returns:**
 - The same state object (for chaining)
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -186,7 +186,7 @@ Always correct, always efficient ✅
 ✅ **Always correct** - Never stale or outdated
 ✅ **Clean code** - Define once, use everywhere
 
----
+ 
 
 ## Mental Model: The Spreadsheet Formula
 
@@ -223,7 +223,7 @@ Think of `computed()` like **formulas in a spreadsheet**:
 
 **Key Insight:** Computed values are like spreadsheet formulas — they express relationships between data and automatically maintain those relationships.
 
----
+ 
 
 ## How Does It Work?
 
@@ -300,7 +300,7 @@ computed(cart, {
 // All three recalculate correctly!
 ```
 
----
+ 
 
 ## Basic Usage
 
@@ -329,7 +329,7 @@ console.log(rectangle.area);      // 100 ✨
 console.log(rectangle.perimeter); // 50 ✨
 ```
 
----
+ 
 
 ### Example 2: String Formatting
 
@@ -361,7 +361,7 @@ console.log(user.fullName);    // "Jane Doe" ✨
 console.log(user.initials);    // "JD" ✨
 ```
 
----
+ 
 
 ### Example 3: Array Aggregations
 
@@ -396,7 +396,7 @@ console.log(scores.average); // 89.67 ✨
 console.log(scores.highest); // 100 ✨
 ```
 
----
+ 
 
 ### Example 4: Filtering and Counting
 
@@ -436,7 +436,7 @@ console.log(todos.pendingCount);     // 1 ✨
 console.log(todos.progressPercent);  // 66.67 ✨
 ```
 
----
+ 
 
 ### Example 5: Conditional Values
 
@@ -467,7 +467,7 @@ subscription.billingCycle = 'monthly';
 console.log(subscription.displayPrice); // "$20.00/month" ✨
 ```
 
----
+ 
 
 ## Computed with DOM Helpers
 
@@ -501,7 +501,7 @@ product.quantity = 3;
 // ✨ DOM automatically shows "$297.00"
 ```
 
----
+ 
 
 ### Example 2: Form Validation Status
 
@@ -539,7 +539,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 3: Dynamic Styling Based on State
 
@@ -572,7 +572,7 @@ effect(() => {
 theme.hue = 280; // ✨ All CSS variables update
 ```
 
----
+ 
 
 ## Real-World Examples
 
@@ -641,7 +641,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 2: Data Table with Sorting and Filtering
 
@@ -703,7 +703,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 3: Time and Duration Calculator
 
@@ -744,7 +744,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Common Patterns
 
@@ -759,7 +759,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ### Pattern 2: Conditional Formatting
 
@@ -778,7 +778,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ### Pattern 3: Plural/Singular Text
 
@@ -793,7 +793,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ### Pattern 4: Derived Booleans
 
@@ -806,7 +806,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ### Pattern 5: Memoized Expensive Operations
 
@@ -823,7 +823,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ## Important Notes
 
@@ -841,7 +841,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ### 2. Computed Values Are Read-Only
 
@@ -862,7 +862,7 @@ state.value = 25;
 console.log(state.doubled); // 50
 ```
 
----
+ 
 
 ### 3. Avoid Side Effects in Computed
 
@@ -890,7 +890,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### 4. Computed Can Depend on Other Computed
 
@@ -903,7 +903,7 @@ computed(state, {
 });
 ```
 
----
+ 
 
 ## Summary
 

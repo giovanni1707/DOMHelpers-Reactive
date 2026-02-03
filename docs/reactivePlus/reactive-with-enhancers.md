@@ -11,7 +11,7 @@ In this tutorial, you'll discover how **Enhancers** supercharge your DOM manipul
 
 When combined with reactive state, these tools make your code incredibly clean and powerful!
 
----
+ 
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Before starting, make sure you understand:
 - Using effects with `effect()`
 - Basic Elements and Collections (from [Reactive with Core](reactive-with-core.md))
 
----
+ 
 
 ## What Are Enhancers?
 
@@ -33,7 +33,7 @@ Before starting, make sure you understand:
 
 Think of them as **power tools** — you can still use a regular screwdriver (basic DOM), but a power drill (Enhancers) is faster and easier!
 
----
+ 
 
 ## Part 1: Bulk Text Updates
 
@@ -74,7 +74,7 @@ effect(() => {
 - Cleaner, more scannable code
 - Same result!
 
----
+ 
 
 ### Understanding the Pattern
 
@@ -96,7 +96,7 @@ Elements.propertyName({
 | `value()` | Input/textarea values |
 | `placeholder()` | Placeholder text |
 
----
+ 
 
 ### Real Example: Dashboard Stats
 
@@ -149,7 +149,7 @@ setInterval(() => {
 2. Effect uses bulk `textContent()` to update all displays
 3. When state changes, all three stats update automatically
 
----
+ 
 
 ## Part 2: Bulk Style Updates
 
@@ -191,7 +191,7 @@ Elements.style({
 });
 ```
 
----
+ 
 
 ### Real Example: Dark Mode Toggle
 
@@ -255,7 +255,7 @@ Elements.themeToggle.addEventListener('click', () => {
 - Effect recalculates colors and applies them
 - CSS transition makes it smooth!
 
----
+ 
 
 ## Part 3: Bulk Class Updates
 
@@ -282,7 +282,7 @@ Elements.classes({
 });
 ```
 
----
+ 
 
 ### Real Example: Form Validation States
 
@@ -390,7 +390,7 @@ Elements.passwordInput.addEventListener('input', (e) => {
 
 All reactive, all automatic! 🎉
 
----
+ 
 
 ## Part 4: Bulk Dataset Updates
 
@@ -424,7 +424,7 @@ effect(() => {
      data-available="true">
 ```
 
----
+ 
 
 ### Real Example: Sortable List
 
@@ -469,7 +469,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Part 5: Attribute Updates
 
@@ -498,7 +498,7 @@ effect(() => {
 
 **Note:** Setting an attribute to `null` or `false` removes it!
 
----
+ 
 
 ### Real Example: Accessible Toggle Button
 
@@ -536,7 +536,7 @@ Elements.menuToggle.addEventListener('click', () => {
 });
 ```
 
----
+ 
 
 ## Part 6: Collection Index Updates
 
@@ -558,7 +558,7 @@ Collections.ClassName.card.style({
 });
 ```
 
----
+ 
 
 ### Real Example: Highlight Active Step
 
@@ -612,7 +612,7 @@ Elements.nextBtn.addEventListener('click', () => {
 });
 ```
 
----
+ 
 
 ## Part 7: Chaining Methods
 
@@ -641,7 +641,7 @@ effect(() => {
 - ✅ Single statement for multiple operations
 - ✅ Clear flow of updates
 
----
+ 
 
 ## Combining Everything: Complete Example
 
@@ -741,7 +741,7 @@ Elements.buyButton.addEventListener('click', () => {
 
 All working together, all reactive! ✨
 
----
+ 
 
 ## Quick Reference Card
 
@@ -786,7 +786,7 @@ Collections.ClassName.name.textContent({
 })
 ```
 
----
+ 
 
 ## Best Practices
 
@@ -840,7 +840,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## What You've Learned 🎓
 
@@ -854,7 +854,7 @@ effect(() => {
 | Index updates | Target collection items by index |
 | Chaining | Combine multiple operations |
 
----
+ 
 
 ## Practice Challenge 🚀
 
@@ -869,7 +869,7 @@ Build a **notification system** with these features:
 
 Give it a try with what you've learned!
 
----
+ 
 
 ## Next Steps
 

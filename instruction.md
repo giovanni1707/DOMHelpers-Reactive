@@ -78,7 +78,7 @@ The reader should feel: **"This feels like a framework… but it's just JavaScri
 - The value of Reactive + DOM Helpers Core together should be undeniable
 - The documentation should feel polished, intentional, and professional
 
----
+ 
 
 ## Phase 1: Understanding the Library
 
@@ -110,7 +110,7 @@ Once you fully understand, you tell me and I will provide you instructions on wh
 
 **Additionally don't provide me any comments in the chat just provide documentation as per the instruction I will provide you**
 
----
+ 
 
 ## YOUR TASK:
 
@@ -128,7 +128,7 @@ Create comprehensive reactive beginner-friendly documentation for **[METHOD_NAME
 8. **Deep Dive Sections** - Cover specific use cases, edge cases, and advanced patterns
 9. **Summary** - Brief recap of key points
 
----
+ 
 
 ## Writing Style Requirements
 
@@ -148,7 +148,7 @@ Create comprehensive reactive beginner-friendly documentation for **[METHOD_NAME
 - Create visual ASCII diagrams showing flow and relationships
 - Use emoji sparingly but strategically (✨ for magic/automatic behavior, 🎉 for successes)
 
----
+ 
 
 ## Section-Level Patterns
 
@@ -173,7 +173,7 @@ Think of it as [real-world analogy]. [Expand on analogy with 2-3 sentences].
 
 [Simple analogy]
 
----
+ 
 
 ## Basic Example: [Context]
 
@@ -212,7 +212,7 @@ At first glance, this looks fine. But there's a hidden limitation.
 ✅ [Make them concrete]
 ```
 
----
+ 
 
 ## Important Documentation Rules You Must Strictly Follow:
 
@@ -250,7 +250,7 @@ At first glance, this looks fine. But there's a hidden limitation.
 - Present every method as a **purpose-built tool**, each valuable in the right situation.
 - Maintain a confident, calm, and professional engineering tone throughout.
 
----
+ 
 
 ## Code Example Requirements
 
@@ -262,7 +262,7 @@ At first glance, this looks fine. But there's a hidden limitation.
 - Add console.log output as comments to show expected results
 - Group related examples together
 
----
+ 
 
 ## Explanatory Techniques
 
@@ -301,7 +301,7 @@ Create comparisons like:
 - Use boxes, arrows, and flow diagrams
 - Show what happens behind the scenes
 
----
+ 
 
 ## Special Sections to Include
 
@@ -312,7 +312,7 @@ Create comparisons like:
 - **"Quick Comparison"** side-by-side of old vs new way
 - **"One-Line Rule"** or **"Simple Rule to Remember"**
 
----
+ 
 
 ## ASCII Diagram Style
 
@@ -337,7 +337,7 @@ Parent
 └─→ Child 3
 ```
 
----
+ 
 
 ## Content Requirements
 
@@ -368,7 +368,7 @@ Parent
 
 Assuming that readers are beginners, some important keywords should be clearly explained so that they can understand and keep engaged in the reading.
 
----
+ 
 
 ## Final Checklist
 

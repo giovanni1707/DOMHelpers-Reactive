@@ -15,7 +15,7 @@ Think of building a web application as **managing two distinct concerns**:
 
 This section explains the architecture, the role of each component, and how data flows through the system.
 
----
+ 
 
 ## The Four Components
 
@@ -28,7 +28,7 @@ When you pair Reactive with DOM Helpers, you get **four distinct components** wo
 
 Each component has a **clear, focused responsibility**. Let's break them down.
 
----
+ 
 
 ## Component #1: Reactive System (State Layer)
 
@@ -80,7 +80,7 @@ effect(() => {
 
 **That's intentional.** The Reactive system is **purely about state**. This keeps it simple, testable, and framework-agnostic.
 
----
+ 
 
 ## Component #2: DOM Helpers Core (Access Layer)
 
@@ -134,7 +134,7 @@ ClassName.btn.update({
 
 **That's the Reactive system's job.** Core just provides the **tools to update the DOM cleanly**.
 
----
+ 
 
 ## Component #3: Enhancers (Convenience Layer)
 
@@ -178,7 +178,7 @@ ClassName.btn.update({
 
 **Enhancers are optional but highly recommended.** They eliminate boilerplate and make your code more expressive.
 
----
+ 
 
 ## Component #4: Conditions (Logic Layer)
 
@@ -230,7 +230,7 @@ whenState(
 - Dynamic styling based on conditions
 - Complex conditional behaviors
 
----
+ 
 
 ## How Data Flows Through the System
 
@@ -274,7 +274,7 @@ Here's how state changes flow to the DOM:
 
 **Let's trace a real example through this flow:**
 
----
+ 
 
 ## Complete Example: Data Flow in Action
 
@@ -302,7 +302,7 @@ computed(counter, {
 - `counter.doubled` - Computed (derived)
 - `counter.isEven` - Computed (derived)
 
----
+ 
 
 ### Step 2: Create Effects (Reactive System)
 
@@ -330,7 +330,7 @@ whenState(
 - Effect tracks `counter.count` and `counter.doubled`
 - Condition tracks `counter.isEven`
 
----
+ 
 
 ### Step 3: The HTML Structure
 
@@ -344,7 +344,7 @@ whenState(
 
 **Structure in place.** Now let's see the flow.
 
----
+ 
 
 ### Step 4: User Interaction (The Trigger)
 
@@ -357,7 +357,7 @@ Elements.incrementBtn.addEventListener('click', () => {
 
 **What happens when `counter.count++` runs?**
 
----
+ 
 
 ### Step 5: Data Flow Breakdown
 
@@ -417,7 +417,7 @@ Elements.countDisplay.classList.remove('even');
 
 **User sees the updated UI! ✨**
 
----
+ 
 
 ## The Flow in Plain English
 
@@ -434,7 +434,7 @@ Let's describe the same flow in simple terms:
 
 **All automatically. All efficiently. All declaratively.**
 
----
+ 
 
 ## Mental Model: The Three Zones
 
@@ -460,7 +460,7 @@ computed(app, {
 - Pure data and logic
 - Testable in isolation
 
----
+ 
 
 ### Zone 2: Behavior (Effects + DOM Helpers)
 **"How does the UI respond to state?"**
@@ -489,7 +489,7 @@ whenState(
 - Uses DOM Helpers for clean updates
 - Declarative, not imperative
 
----
+ 
 
 ### Zone 3: Structure (HTML)
 **"What is the UI layout?"**
@@ -507,7 +507,7 @@ whenState(
 - No embedded logic
 - Designer-friendly
 
----
+ 
 
 ## Why This Architecture Works
 
@@ -520,7 +520,7 @@ Each zone has **one job**:
 
 **No mixing. No confusion.**
 
----
+ 
 
 ### 2. Unidirectional Data Flow
 
@@ -534,7 +534,7 @@ State → Effects → DOM Helpers → DOM
 - Predictable updates (no circular dependencies)
 - Simple mental model (always flows down)
 
----
+ 
 
 ### 3. Reactive by Default, Manual When Needed
 
@@ -556,7 +556,7 @@ function updateUserName() {
 
 **You choose the right tool for the job.**
 
----
+ 
 
 ### 4. Testable Components
 
@@ -583,7 +583,7 @@ Elements.textContent({ display: app.count });
 assert(Elements.display.textContent === '1'); // ✓
 ```
 
----
+ 
 
 ## Real-World Example: Login Form
 
@@ -599,7 +599,7 @@ Let's see the complete architecture in a realistic scenario.
 </form>
 ```
 
----
+ 
 
 ### State Layer (Zone 1 - Reactive)
 ```javascript
@@ -620,7 +620,7 @@ computed(loginState, {
 });
 ```
 
----
+ 
 
 ### Behavior Layer (Zone 2 - Effects + DOM Helpers)
 
@@ -687,7 +687,7 @@ Elements.passwordInput.addEventListener('input', (e) => {
 });
 ```
 
----
+ 
 
 ### The Flow When User Types Email
 
@@ -700,7 +700,7 @@ Elements.passwordInput.addEventListener('input', (e) => {
 
 **All automatic. All efficient.**
 
----
+ 
 
 ## Key Architectural Principles
 
@@ -717,7 +717,7 @@ const darkMode = false; // State
 body.classList.add('dark'); // Separate UI state (out of sync!)
 ```
 
----
+ 
 
 ### Principle 2: Unidirectional Flow
 **Data flows one direction: State → DOM**
@@ -734,7 +734,7 @@ Element.display.textContent = counter.count;
 counter.count = parseInt(Element.display.textContent); // Reading back from DOM!
 ```
 
----
+ 
 
 ### Principle 3: Declarative Over Imperative
 **Describe what, not how.**
@@ -758,7 +758,7 @@ if (user.status === 'active') {
 }
 ```
 
----
+ 
 
 ### Principle 4: Separation of Concerns
 **Each layer has one responsibility.**
@@ -782,7 +782,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ## Summary: The Architecture
 
@@ -803,7 +803,7 @@ State → Computed → Effects → DOM Helpers → Enhancers/Conditions → DOM
 State (Reactive) ↔ Behavior (Effects + DOM Helpers) ↔ Structure (HTML)
 ```
 
----
+ 
 
 ## What You've Learned
 
@@ -813,7 +813,7 @@ State (Reactive) ↔ Behavior (Effects + DOM Helpers) ↔ Structure (HTML)
 ✅ **Why this architecture is clean and scalable**  
 ✅ **Mental models for understanding the system**
 
----
+ 
 
 ## What's Next?
 

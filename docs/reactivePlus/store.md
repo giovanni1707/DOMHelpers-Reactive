@@ -38,7 +38,7 @@ Elements.update({
 
 **That's it.** Create global state stores with computed getters and action methods. Perfect for application-level state management.
 
----
+ 
 
 ## What is `store()`?
 
@@ -48,7 +48,7 @@ Think of it as **a mini Redux/Vuex** — centralized state with getters (compute
 
 **In practical terms:** Instead of scattering state logic throughout your app, you create a store that holds all state, computed values, and methods to modify that state in one place.
 
----
+ 
 
 ## Syntax
 
@@ -116,7 +116,7 @@ todoStore.toggleTodo(123);
 **Returns:**
 - Reactive store with state, getters (computed), and actions (methods)
 
----
+ 
 
 ## Why Does This Exist?
 
@@ -248,7 +248,7 @@ Elements.update({
 ✅ **Automatic updates** - Effects handle DOM sync
 ✅ **Easy to test** - Isolated state logic
 
----
+ 
 
 ## Mental Model: Central Database
 
@@ -295,7 +295,7 @@ Think of `store()` like **a central database with views and procedures**:
 
 The store is your **single source of truth** with clear structure.
 
----
+ 
 
 ## Basic Usage
 
@@ -360,7 +360,7 @@ Elements.update({
 });
 ```
 
----
+ 
 
 ### Example 2: Shopping Cart Store
 
@@ -435,7 +435,7 @@ effect(() => {
 });
 ```
 
----
+ 
 
 ### Example 3: User Authentication Store
 
@@ -506,11 +506,11 @@ effect(() => {
 });
 ```
 
----
+ 
 
 See full documentation for 10+ comprehensive examples covering todo lists, theme stores, notification systems, and more.
 
----
+ 
 
 ## store() vs state()
 
@@ -560,7 +560,7 @@ todoStore.addTodo('Buy milk');
 ✅ Simple reactive data
 ✅ Flexible, ad-hoc patterns
 
----
+ 
 
 ## Key Takeaways
 
@@ -570,7 +570,7 @@ todoStore.addTodo('Buy milk');
 ✅ **Reactive** - Works with effects and bindings
 ✅ **Global state pattern** - Single source of truth
 
----
+ 
 
 ## What's Next?
 
@@ -578,7 +578,7 @@ todoStore.addTodo('Buy milk');
 - **`state()`** - For simple reactive state
 - **`computed()`** - Add computed properties
 
----
+ 
 
 ## Summary
 
